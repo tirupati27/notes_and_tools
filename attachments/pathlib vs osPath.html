@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>os.path vs pathlib Cheat Sheet</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Python os.path → pathlib Mapping Cheat Sheet</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>os.path Function</th>
+          <th>What it Does</th>
+          <th>pathlib Equivalent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>os.path.join(a, b, ...)</td>
+          <td>Join paths</td>
+          <td>Path(a) / b / ...</td>
+        </tr>
+        <tr>
+          <td>os.path.exists(path)</td>
+          <td>Check if path exists</td>
+          <td>Path(path).exists()</td>
+        </tr>
+        <tr>
+          <td>os.path.isfile(path)</td>
+          <td>Check if file</td>
+          <td>Path(path).is_file()</td>
+        </tr>
+        <tr>
+          <td>os.path.isdir(path)</td>
+          <td>Check if directory</td>
+          <td>Path(path).is_dir()</td>
+        </tr>
+        <tr>
+          <td>os.path.abspath(path)</td>
+          <td>Absolute path</td>
+          <td>Path(path).resolve()</td>
+        </tr>
+        <tr>
+          <td>os.path.basename(path)</td>
+          <td>Get file name</td>
+          <td>Path(path).name</td>
+        </tr>
+        <tr>
+          <td>os.path.dirname(path)</td>
+          <td>Get parent directory</td>
+          <td>Path(path).parent</td>
+        </tr>
+        <tr>
+          <td>os.path.splitext(path)</td>
+          <td>Split name & extension</td>
+          <td>Path(path).stem, Path(path).suffix</td>
+        </tr>
+        <tr>
+          <td>os.path.expanduser("~")</td>
+          <td>Expand ~ to home</td>
+          <td>Path.home()</td>
+        </tr>
+        <tr>
+          <td>os.path.expandvars(path)</td>
+          <td>Expand environment variables</td>
+          <td>Path(os.environ["VAR"])</td>
+        </tr>
+        <tr>
+          <td>os.path.normpath(path)</td>
+          <td>Normalize path (collapse .., .)</td>
+          <td>Path(path).resolve(strict=False)</td>
+        </tr>
+        <tr>
+          <td>os.path.realpath(path)</td>
+          <td>Resolve symlinks</td>
+          <td>Path(path).resolve()</td>
+        </tr>
+        <tr>
+          <td>os.path.split(path)</td>
+          <td>Split into (dir, file)</td>
+          <td>Path(path).parent, Path(path).name</td>
+        </tr>
+        <tr>
+          <td>os.path.commonpath(paths)</td>
+          <td>Longest common path</td>
+          <td>os.path.commonpath([str(p) for p in paths])</td>
+        </tr>
+        <tr>
+          <td>os.path.relpath(path, start)</td>
+          <td>Relative path</td>
+          <td>(Path(path).resolve().relative_to(Path(start).resolve()))</td>
+        </tr>
+        <tr>
+          <td>os.path.getsize(path)</td>
+          <td>File size in bytes</td>
+          <td>Path(path).stat().st_size</td>
+        </tr>
+        <tr>
+          <td>os.path.getmtime(path)</td>
+          <td>Last modified time</td>
+          <td>Path(path).stat().st_mtime</td>
+        </tr>
+        <tr>
+          <td>os.path.getctime(path)</td>
+          <td>Creation time</td>
+          <td>Path(path).stat().st_ctime</td>
+        </tr>
+        <tr>
+          <td>os.path.lexists(path)</td>
+          <td>Exists even if symlink broken</td>
+          <td>Path(path).exists() or Path(path).is_symlink()</td>
+        </tr>
+        <tr>
+          <td>os.path.islink(path)</td>
+          <td>Check symlink</td>
+          <td>Path(path).is_symlink()</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

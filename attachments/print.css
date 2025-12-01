@@ -1,0 +1,11 @@
+<style>
+.dont_show {
+  display: none !important;
+}
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    overflow: visible !important;
+  }
+}
+</style>

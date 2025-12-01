@@ -1,0 +1,419 @@
+#!/bin/bash
+******************************************************
+# Important Paths
+# %SystemRoot% - an environment variable on windows os
+%ProgramFiles%
+%TEMP%
+%USERPROFILE%
+%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe
+%SystemRoot%\System32\cmd.exe
+C:\Windows\System32   # Find here many png logo
+******************************************************
+# flask inside termux
+subprocess.run("am start -a android.intent.action.VIEW -d http://127.0.0.1:9000/", shell=True, capture_output=True)
+#To Run the flask app
+if __name__ == '__main__':
+  app.run(debug=True, host='0.0.0.0', port=9000)
+******************************************************
+# Github repo http link
+https://github.com/<user-name>/<repo-name>.git
+https://github.com/tirupati27/tools.git
+https://github.com/tirupati27/mycmd.git
+
+# Github repo SSH link
+git@github.com:<user-name>/<repo-name>.git
+git@github.com:tirupati27/tools.git
+git@github.com:tirupati27/mycmd.git
+
+# Github hosted page link and other links
+https://<user-name>.github.io/<repo-name>/
+https://tirupati27.github.io/tools/
+https://tirupati27.github.io/tools/html_printer.js
+<script src="https://tirupati27.github.io/tools/html_printer.js"></script>
+https://tirupati27.github.io/mycmd/
+https://tirupati27.github.io/python-s-documentations/
+
+******************************************************
+# WSL COMMANDS
+# Install WSL with default Linux distro (Ubuntu) and enable required features
+wsl --install
+# Restart the PC if prompted (finishes WSL installation)
+# Manual step
+# List installed WSL distributions and show their WSL version
+wsl --list --verbose
+# Set WSL2 as default for all future installed distributions
+wsl --set-default-version 2
+# Launch default Linux distro for first-time setup (username/password)
+wsl
+# Launch a specific Linux distro by name
+wsl -d <DistroName>
+# List all available Linux distributions that can be installed
+wsl --list --online
+# Install a specific Linux distribution
+wsl --install -d <DistroName>
+# Update WSL kernel to the latest version
+wsl --update
+# Check WSL system info and status
+wsl --status
+******************************************************
+cp -r source_folder destination_folder
+******************************************************
+ssh-keygen -t ed25519 -C "your_email@example.com"
+# ssh-keygen - This is the program that generates, manages, and converts authentication keys for SSH.
+# -t ed25519 - This specifies the type of key to create. `ed25519` is a modern, secure, and fast key algorithm.
+# -C - This adds a comment to the key. it's just a label to identify the key later.
+# Now update the file '~/.ssh/config' like following
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+# Host github.com                - Matches your Git URL: git@github.com:user/repoName
+# HostName github.com            - The real server to connect to.
+# User git                       - Required by GitHub for SSH access.
+# IdentityFile ~/.ssh/id_ed25519 - Uses your private key here (change if you use a different key).
+# IdentitiesOnly yes             - Ensures SSH uses only the specified key and ignores others.
+
+ssh -T git@github.com   # Test the authentication
+eval "$(ssh-agent -s)"  # Start the ssh-agent to remember your pass phrase.
+ssh-add ~/.ssh/id_ed25519   # now ssh-agent remember your pass phrase so you don't need to type passPhrase each time
+******************************************************
+# Git commands
+git clone git@github.com:tirupati27/daily_utility.git # for private repo, ssh link
+git push origin main --force
+git config --local --list
+# --origin related
+git remote add origin git@github.com:tirupati27/mycmd.git   # error: remote origin already exists.
+git remote set-url origin https://github.com/tirupati27/mycmd.git      # not give the above error
+git remote set-url origin git@github.com:tirupati27/mycmd.git      # not give the above error
+git remote -v             # check the remote repo link
+git fetch origin              # fetch latest upstream (remote tracking)
+git diff origin/main          # compare with upstream
+# --merge related
+git merge <branch-name>   # put <branch-name> changes into the branch I am currently on
+git merge <branch-name> -X theirs/ours  # If a conflict happens, automatically take changes from theirs/ours.
+# "rev-parse @" and "rev-parse HEAD" both are same
+git checkout main             # switch to your local branch
+git reset --hard @{u}         # reset local branch to match upstream
+                              # @{u} is shorthand for your upstream branch (e.g., origin/main).
+                              # --hard discards all local commits and changes — your branch now exactly matches upstream.
+git branch -d branch_name     # Safe delete (only if fully merged)
+git branch -D branch_name     # Force delete (even if not merged)
+******************************************************
+# PowerShell commands
+Get-ExecutionPolicy -List                             # To check the script execution policies
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser    # To allow running local scripts
+Set-ExecutionPolicy Restricted -Scope CurrentUser   # To restrict running local scripts
+echo $env:Path                                   # To check the PATH variable
+$env:Path += ";C:\path\to\add"                   # To add a new path to the PATH variable
+echo $PROFILE                   # To check the path of the PowerShell profile script (like ~/.bashrc in linux)
+Write-Host "Blue text" -ForegroundColor blue   # To print colored text in PowerShell
+cd "$env:USERPROFILE\desktop"          # To navigate to the desktop directory
+******************************************************
+[[ -z "$var" ]]     # Check for empty variable
+[[ -n "$var" ]]     # check for non empty variable
+********************************************************
+nano ~/.bashrc
+
+if [[ $UID -eq 0 ]]; then
+    # root user prompt
+    export PS1='\[\033[38;2;255;255;0m\]Tirupati:\[\033[0m\] \[\033[38;2;220;100;100m\]\w\[\033[0m\] \[\033[38;2;255;255;0m\]#\[\033[0m\] '
+else
+    # non-root user prompt
+    export PS1='\[\033[38;2;255;255;0m\]Tirupati:\[\033[0m\] \[\033[38;2;220;100;100m\]\w\[\033[0m\] \[\033[38;2;255;255;0m\]\$\[\033[0m\] '
+fi
+********************************************************
+my_function > /dev/null                # Silence only stdout
+my_function 2> /dev/null               # Silence only stderr
+my_function > /dev/null 2>&1           # Silence both stdout and stderr
+my_function > /dev/null 2>&1 &         # Run silently in BACKGROUND asynchronously
+********************************************************
+if ! git -C "$MYCMD" rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "$MYCMD is not a Git repository."
+    exit 1
+fi
+********************************************************
+if [[ "$response" =~ ^([Yy]|[Yy][Ee][Ss])$ ]]; then # Y, y, Yes, yes, yEs, YES (any case combination)
+********************************************************
+declare -xr MYCMD="$HOME/.mycmd"
+# -x → export (available to child processes)
+# -r → readonly (cannot be modified or unset)
+********************************************************
+# copyright format
+© [Year] [Your Name/Company]. All Rights Reserved
+© 2025 Tirupati. All Rights Reserved
+********************************************************
+# --upgrade == -U
+# --requirement == -r
+pip freeze | cut -d = -f 1 | xargs -n1 pip install -U # upgrade all pip packages
+pip install -U package_name   # Upgrade a pip package 
+pip freeze  # lists all installed packages with versions.
+pip freeze > requirements.txt    # save all installed packages to requirement.txt
+pip list --outdated --format=columns    # Show all outdated packages
+pip install -r requirements.txt     # recreate the environment
+pip install -U -r requirements.txt     # NOT WORKING NEVER USE IT
+********************************************************
+# how to know the absolute file name of a bash script in the runtime
+SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)/$(basename "$0")"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# dirname extracts the directory portion from the full path
+********************************************************
+${str1,,}   # converts the string to lowercase
+# can be use for case insensitive comparison
+********************************************************
+# check last command fails or success
+if [[ $? -eq 0 ]]; then
+    echo "✅ Success"
+else
+    echo "❌ Failed"
+fi
+********************************************************
+ytdlp_command="yt-dlp \
+                -f ba+bv \
+                -o '%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s' \
+                --merge-output-format mp4 \
+                --embed-thumbnail \
+                --write-thumbnail \
+                --ignore-errors \
+                --retries infinite \
+                --fragment-retries 10 \
+                $PLAYLIST_URL"
+********************************************************
+netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=9000 connectaddress=172.18.33.18 connectport=9000
+# netsh interface portproxy add v4tov4	    Create a port-forward rule that maps IPv4 → IPv4 traffic
+# listenaddress=0.0.0.0	                    Listen on all network interfaces on Windows (so it catches LAN/Wi-Fi connections)
+# listenport=4321	                        The port on Windows that external devices will connect to
+# connectaddress=172.24.112.18            	The internal WSL IP address where your Python server is running
+# connectport=4321	                        The port inside WSL you want to forward to (same one your Python server uses)
+netsh interface portproxy show all      # check all existing port forwardings
+netsh interface portproxy delete v4tov4 listenport=9000 listenaddress=0.0.0.0
+# the above command is to delete a rule
+********************************************************
+if command -v pip >/dev/null 2>&1; then
+    echo "✅ pip is available"
+else
+    echo "❌ pip not found"
+fi
+********************************************************
+highlight js minified file is there in this project you can use that
+
+********************************************************
+********************************************************
+if [ ${#my_array[@]} -eq 0 ]; then
+    echo "Array is empty"
+else
+    echo "Array has elements"
+fi
+********************************************************
+#In Windows Command Prompt (cmd.exe),
+#the command to clear the screen is simply:
+cls
+********************************************************
+# Termux setup commands
+termux-setup-storage
+pkg update && pkg upgrade -y
+pkg install which python3 git matplotlib rust zip clang wget make libxml2 libxslt ffmpeg
+# Already present in termux - unzip nano curl
+pip install --upgrade setuptools wheel
+pip install requests flask django yt-dlp fastapi python-multipart python-docx python-pptx pypdf2 pdf2image uvicorn httptools websockets watchfiles python-dotenv qrcode[pil] prompt-toolkit reportlab pandas
+# Note: 'pkg install matplotlib' will also install the pip packages-- numPy matplotlib pillow 
+# Dont try to install-- uvicorn[standard], scipy
+pip cache purge
+pkg clean
+# --------------------------------
+mkdir -p ~/bin
+mkdir -p ~/downloads
+cat << EOF > ~/bin/termux-file-editor
+#!/data/data/com.termux/files/usr/bin/sh
+nano "$1"
+EOF
+echo -e "\n\033[1;32mSetup complete!\033[0m"
+echo -e "\nNote: Turn on 'display over other apps' permission for Termux from Android settings.\n"
+********************************************************
+# To save multiple lines into a file in Bash
+cat << EOF > filename.txt
+Line 1
+Line 2
+Line 3
+EOF
+********************************************************
+# To check the size of a folder in human readable format
+du -sh /path/to/folder
+# To check the total size of a folder in human readable format including all its subfolders
+du -ch /path/to/folder
+********************************************************
+# Compress multiple files or folders
+zip -r archive.zip file1.txt file2.txt folder1 folder2
+zip -r project.zip /home/user/project   # compress a single folder
+# Extract a zip file
+unzip archive.zip -d /path/to/destination_folder
+unzip -o archive.zip -d /path/to/destination_folder   # overwrite existing files without prompting
+unzip archive.zip    # extract in the current directory
+unzip -l archive.zip   # list contents of zip file
+********************************************************
+# FAQ (can be search later, to get clarity)
+# my question is, why these lots of methods like (get,put...)? even only post method can send a message to server to what kind of task to perform
+# it means it can send any request (get,put,post,delete) and also comes with a response from the server
+# ok, another question is there, can i send json through GET ?
+********************************************************
+| Use case                                                                            | Recommended Content-Type                                     |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Sending **structured data** (text, numbers, lists, objects)                         | `application/json`                                           |
+| Uploading **files** (images, videos, documents) — possibly *with extra form fields* | `multipart/form-data`                                        |
+| Submitting **simple forms** (like HTML form POSTs)                                  | `application/x-www-form-urlencoded` or `multipart/form-data` |
+
+✅✅✅✅✅✅✅✅✅✅Sending request using fetch() API✅✅✅✅✅✅✅✅✅✅✅✅✅
+✅✅✅✅✅✅✅✅✅✅Sending request using fetch() API✅✅✅✅✅✅✅✅✅✅✅✅✅
+
+const file = fileInputElement.files[0];
+const formData = new FormData();
+formData.append("file", file);
+formData.append("title", "My Video");
+formData.append("user_id", "101");
+formData.append("description", "Beach trip vlog");
+
+fetch(url, {
+  method: "POST",
+#----------Start: for json body--------
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer token_here",
+  },
+  body: JSON.stringify({
+    pin: "1000",
+  }),
+#----------End: for json body--------
+#----------Start: for FormData body--------
+  headers: {
+    "Authorization": "Bearer token_here",
+  },
+  body: formData,
+#----------End: for FormData body--------
+})
+  .then((res) => res.json())
+  .then((data) => {
+    console.log("✅ Response:", data);
+  })
+  .catch((error) => {
+    console.error("❌ Error:", error);
+  });
+✅✅✅✅✅✅✅✅✅✅Sending request using Python's request module✅✅✅✅✅✅✅✅✅✅✅✅✅
+✅✅✅✅✅✅✅✅✅✅Sending request using Python's request module✅✅✅✅✅✅✅✅✅✅✅✅✅
+# SEE api_test.py FILE FOR MORE INFO
+import requests
+'''
+requests.METHOD(
+            url,
+            headers=None,
+            params=None,
+            json=None,
+            files=None,
+            data=None,
+            cookies=None,
+            auth=None,
+            timeout=None,
+            allow_redirects=True,
+            proxies=None,
+            hooks=None, 
+            stream=None,
+            verify=None,
+            cert=None
+)
+'''
+response = requests.post(url, headers=headers, json=json_body)
+# below is for file sending 
+with open(file_path, "rb") as f:
+    files = {"file": (file_path, f)}  # (filename, file object)
+    response = requests.post(url, headers=headers, files=files, data=data)
+
+msg = "✅ Response:" if response.ok else "❌ Error:"
+try:
+    print(f"{msg} {response.status_code}")
+    pprint(response.json())
+except Exception:
+    print(f"{msg} {response.status_code}\n{response.text}")
+******************************************************
+******************************************************
+import inspect
+from requests import Session
+for i in inspect.signature(Session.request).parameters.values():
+    print(i)
+******************************************************
+******************************************************
+from fastapi import Request
+dir(Request)
+def funName(request: Request):
+    | `request.method`       | `"GET"`, `"POST"`, `"PUT"`, `"DELETE"`, etc. |
+    | `request.url`          | Full URL including query string              |
+    | `request.url.path`     | Just the path (e.g. `/users/5`)              |
+    | `request.headers`      | All HTTP headers                             |
+    | `await request.body()` | Raw request body (bytes)                     |
+    | `await request.json()` | Parsed JSON body (dict)                      |
+    | `await request.form()` | Form data (for file uploads or HTML forms)   |
+    | `request.query_params` | URL query parameters (e.g. `?id=5`)          |
+********************************************************
+********************************************************
+from fastapi import Depends
+
+@app.get("/config")
+def read_config(variableName: str = Depends(lambda: functionName(parameters))):
+******************************************************
+******************************************************
+In Python, the function **`json.load()`** is used to **read and parse a JSON object from a file-like object** (e.g., an open file).
+It **returns** a **Python object** that corresponds to the JSON data.
+Here’s the mapping between JSON types and Python types:
+
+| JSON Type      | Returned Python Type |
+| -------------- | -------------------- |
+| object         | `dict`               |
+| array          | `list`               |
+| string         | `str`                |
+| number (int)   | `int`                |
+| number (float) | `float`              |
+| true           | `True`               |
+| false          | `False`              |
+| null           | `None`               |
+
+******************************************************
+******************************************************
+Que:- def funName(req: Request, pin: str = Depends(verify_pin)):
+here, it is clear that the value in "pin" variable coming from an another function but value in "req"? the 'Request' is used as a type hint
+| Concept        | Standard Python          | FastAPI’s Behavior                                    |
+| -------------- | ------------------------ | ----------------------------------------------------- |
+| Type hints     | Ignored at runtime       | Used to decide what to inject                         |
+| Default values | Used for actual defaults | Used for dependency injection (`Depends`)             |
+| Function calls | You call them directly   | FastAPI calls them for you, with auto-injected params |
+
+what FastAPI is doing is not magic, it’s just advanced Python introspection and DYNAMIC ARGUMENT BUILDING. and then call the function with those arguments.
+********************************************************
+********************************************************
+def parse_args():
+    args = sys.argv[1:]  # Skip the script name
+    cli_dict = {}
+    i = 0
+    while i < len(args):
+        if args[i].startswith("--"):
+            key = args[i][2:]  # remove the leading "--"
+            # Check if there is a next argument and if it's not another flag
+            if i + 1 < len(args) and not args[i + 1].startswith("--"):
+                cli_dict[key] = args[i + 1]
+                i += 2
+            else:
+                cli_dict[key] = True  # flag without value
+                i += 1
+        else:
+            i += 1
+    return cli_dict
+********************************************************
+********************************************************
+# extract json from yt playlist
+const items = [...document.querySelectorAll('ytd-playlist-video-renderer')];
+const playlist = {};
+items.forEach(el => {
+  const link = el.querySelector('a#video-title');
+  const title = link.textContent.trim();
+  const videoId = new URL(link.href).searchParams.get("v");
+  playlist[videoId] = title;
+});
+copy(JSON.stringify(playlist, null, 2));
+playlist;

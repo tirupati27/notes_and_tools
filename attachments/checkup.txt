@@ -1,0 +1,17 @@
+1. Windows Update
+2. Update from "Hp support Assistant"
+3. Update from "Intel driver & support Assistant"
+4. Disk cleanup
+5. Folder Cleanup--
+
+Win+R => temp, %temp%, 
+
+
+
+
+System settings.................
+
+1. Win+R => sisdm.cpl => advanced tab
+2. metered connection for a specific wifi network in the both account 
+3. tirupati.theme in the both account
+
