@@ -12,9 +12,10 @@ This project is designed to make studying, documentation, and resource browsing 
 ├── .Olevel/              # All practical and project files learned during olevel
 ├── attachments/          # tools, PDF, images, videos, code files, etc.
 ├── highlightjs/          # Highlight.js library and themes
+├── run.py                # A shortcut to open this app into the default browser. (also supported in termux)
 ├── app.html              # Main app shell
-├── notes_body.html       # Note content loaded dynamically
-├── theme_backup.css      # default theme backup
+├── notes_body.html       # The actual Note content, loaded dynamically, it can also be run to read the notes
+├── theme_backup.css      # default theme backup, copy and paste in the main app.
 ├── serialize.py          # serialize the notes body sections (run "python serialize.py" when needed)
 └── README.md             # (This file)
 ```
@@ -29,6 +30,7 @@ This project is designed to make studying, documentation, and resource browsing 
 - Automatically formats headings
 - Converts tag lists into styled “search labels”
 - Generates attachment buttons with preview support
+- Theme can be customize by css variable through code editor
 
 ### ✅ **Attachment Preview System**
 
@@ -106,6 +108,8 @@ Then open:
 ```
 http://127.0.0.1:9000/app.html
 ```
+
+or simply `python run.py`
 
 ### 2. **Add Notes**
 

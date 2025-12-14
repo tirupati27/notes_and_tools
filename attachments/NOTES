@@ -1,13 +1,96 @@
 #!/bin/bash
 ******************************************************
-# Important Paths
-# %SystemRoot% - an environment variable on windows os
-%ProgramFiles%
-%TEMP%
-%USERPROFILE%
-%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe
-%SystemRoot%\System32\cmd.exe
-C:\Windows\System32   # Find here many png logo
+def build_extension_inplace():
+    try:
+        import _fastsearch
+    except ImportError:
+        print("_fastsearch module is missing → building…")
+        name = "_fastsearch"
+        sources = ["fastsearch.c"]
+        from setuptools import Extension
+        from setuptools.command.build_ext import build_ext
+        from setuptools.dist import Distribution
+        dist = Distribution({
+            "name": name,
+            "ext_modules": [Extension(name, sources=sources)]
+        })
+        # Create build_ext command
+        cmd = build_ext(dist)
+        # Build as if using --inplace
+        cmd.inplace = True
+        cmd.ensure_finalized()
+        cmd.run()
+        import _fastsearch
+    
+    return _fastsearch
+
+_fastsearch = build_extension_inplace()
+del build_extension_inplace
+# the c language file is located at /notes_and_tools/attachments/fastsearch.c
+
+******************************************************
+If you want your Python script to **run as if it was executed from its own directory**, regardless of *where* you actually run it from, use this pattern:
+
+# ✅ **Make script always run from its own directory**
+
+Put this at the top of your Python file:
+
+```python
+import os
+import sys
+
+# Change working directory to script's directory
+script_dir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_dir)
+```
+
+Now your script behaves as if you started it with:
+
+```
+cd /path/to/script
+python script.py
+```
+
+even if you actually start it from somewhere else, such as:
+
+```
+python /path/to/script/script.py
+```
+
+---
+
+# 📝 Example
+
+If your script loads files like:
+
+```python
+with open("config.json") as f:
+    data = f.read()
+```
+
+It will now work, because you're running from the correct folder.
+
+---
+
+# 🧠 Why this works
+
+* `__file__` gives the full path to the script
+* `os.path.dirname()` extracts the folder
+* `os.chdir()` switches the working directory
+
+---
+
+# 🔥 Bonus: Get the true, resolved script directory (handles symlinks)
+
+```python
+script_dir = os.path.dirname(os.path.realpath(__file__))
+os.chdir(script_dir)
+```
+
+---
+
+If you want, I can integrate this directly into your `http.server` script or Flask-style server — just tell me!
+
 ******************************************************
 # flask inside termux
 subprocess.run("am start -a android.intent.action.VIEW -d http://127.0.0.1:9000/", shell=True, capture_output=True)

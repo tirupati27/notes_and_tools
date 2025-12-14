@@ -206,6 +206,34 @@
         border-radius: var(--radius-md);
         padding-left: 12px;
       }
+
+      /* ============================================================
+ MEDIA QUERY FOR PRINTING
+ ============================================================ */
+      @media print {
+        /* Remove margins if needed */
+        @page {
+          size: A4 portrait;
+          margin: 10mm;
+        }
+        /* Avoid color loss or dimming */
+        body {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        /* Ensure images always print */
+        img {
+          max-width: 100% !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        section {
+          min-height: auto !important;
+          height: auto !important;
+          box-shadow: none !important;
+          page-break-inside: avoid !important;
+        }
+      }
     </style>
   </head>
 
