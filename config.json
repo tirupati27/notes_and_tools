@@ -1,0 +1,8 @@
+{
+  "default_tolerance": 4,
+  "default_search_dir": ".",
+  "search_highlighter": "93;46;16",
+  "ignore_file_folder_name": [".git", "__pycache__"],
+  "skip_inside_search_bigger_than": 100,
+  "path_result_per_page": 20
+}

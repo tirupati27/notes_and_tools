@@ -1,0 +1,50 @@
+#!/bin/bash
+******************************************************
+sys.modules    # dic
+# it contains each and every single module imported in runtime
+sys.path    # list
+# it contains path, where python runtime seeks for modules (a .py file) and packages (a folder having __init__.py file)
+# like cwd, DLLs, Lib, site-packages, interpreter's path
+******************************************************
+# when we import any module using any syntax like "from pkg import mod" or "import h" then python alway runs that module or package (__init__.py)
+******************************************************
+builtin_variables_in_python
+# In Python, names with double underscores (often called dunder names) are special built-in attributes that give information about a module, class, function, or the runtime environment.
+__name__
+# the value of this variable is "__main__" if run directly other wise the name of the module like "textattr", "mypkg.util", etc
+__file__
+# it contains the full path of the script 
+__package__
+# it contains the name of the package from the module belongs to
+# for top level modules (sys.path[0]) it's value is None
+__spec__
+# A ModuleSpec view object containing metadata about the module.
+# Includes: the value of __name__, __file__, __loader__
+__cached__
+# Path to the compiled bytecode (.pyc) file.
+# print(__cached__)     # __pycache__/example.cpython-311.pyc 
+__doc__
+# The function/class/module docstring.
+******************************************************
+sys.path of the main script and sys.path of a imported script always same?
+    # yes, When you import a module in Python, there is only one sys.path per interpreter process, and both the main script and all imported modules see the same sys.path object.
+how to make a python package...
+    # 1. collect all modules in a folder 
+    # 2. add __init__.py file in the folder, which will represent the package and whenever any script use this your pkg this file runs first like ~/.bashrc.
+    # 3. inside the package use relative import (. | .. | ...) like `from .module import fun` dont use it without dot, because the PACKAGE'S FOLDER ITSELF IS NEVER THE PART OF SYS.PATH BY DEFAULT.
+    #     so after searching your module in sys.path list it will raise ModuleNotFoundError.
+    # 4. for any package we can traverse between the objects like mypkg.util.fun, note that modules and packages (or anything) is a object in python.
+role of __init__.py in a package
+    # it plays a crucial role in design of a python package, it can be empty as well
+    # You can think of this script as '~/.bashrc' file.
+    # This script will always runs when imported this package using any syntax:
+    #     from tested_tools import a
+    #     import tested_tools
+    #     from tested_tools.example import fun
+    # __init__.py file used to export objects to importer
+******************************************************
+# THERE IS ONLY ONE SYS.PATH PER INTERPRETER PROCESS, AND BOTH THE MAIN SCRIPT AND ALL IMPORTED MODULES SEE THE SAME SYS.PATH OBJECT.
+******************************************************
+******************************************************
+******************************************************
+******************************************************

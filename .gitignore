@@ -1,3 +1,5 @@
 highlightjs/
 .Olevel/
 __pycache__/
+tested_tools/__pycache__/
+github_repo/
