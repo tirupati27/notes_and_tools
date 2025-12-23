@@ -10,7 +10,7 @@ def search_in_path_and_utf8_files(
     case_sensitive: bool = False,
     only_search_in_pathname: bool = False,
     ignore_pathname: list | None = None,
-    skip_inside_search_bigger_than: int = 100 * 1024 * 1024,
+    skip_content_search_gt: float | int = 100 * 1024 * 1024,
 ) -> tuple:
     """
     Search for a given keyword in path names and UTF-8 encoded text files
@@ -34,7 +34,7 @@ def search_in_path_and_utf8_files(
     keyword = keyword if case_sensitive else keyword.lower()
     ignore_pathname = set(ignore_pathname or [])
 
-    print(f"Searching `{keyword}`...")
+    print(f"Searching `{keyword}` in dir `{directory}` ...")
 
     result_in_files: list[tuple[str, int]] = []
     result_in_path_names: list[str] = []
@@ -54,7 +54,6 @@ def search_in_path_and_utf8_files(
             print(
                 f"\rTotal-files: {total_files} "
                 f"| Matches: {len(result_in_files) + len(result_in_path_names)} "
-                f"| Errors: {len(errors)} "
                 f"| Skipped: {skipped} ",
                 end="",
                 flush=True,
@@ -64,15 +63,14 @@ def search_in_path_and_utf8_files(
         # search keyword in pathname (case insensitive)
         if keyword.lower() in filepath.lower():
             result_in_path_names.append(filepath)
+            if only_search_in_pathname:
+                continue
 
         # Skip conditions
-        if only_search_in_pathname:
-            skipped += 1
-            continue
         if ignore_pathname and set(filepath.split(os.sep)) & ignore_pathname:
             skipped += 1
             continue
-        if entry.stat().st_size > skip_inside_search_bigger_than:
+        if entry.stat().st_size > skip_content_search_gt:
             skipped += 1
             continue
 
@@ -94,7 +92,6 @@ def search_in_path_and_utf8_files(
     print(
         f"\rTotal-files: {total_files} "
         f"| Matches: {len(result_in_files) + len(result_in_path_names)} "
-        f"| Errors: {len(errors)} "
         f"| Skipped: {skipped} "
     )
 

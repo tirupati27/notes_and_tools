@@ -44,6 +44,8 @@ role of __init__.py in a package
     # __init__.py file used to export objects to importer
 ******************************************************
 # THERE IS ONLY ONE SYS.PATH PER INTERPRETER PROCESS, AND BOTH THE MAIN SCRIPT AND ALL IMPORTED MODULES SEE THE SAME SYS.PATH OBJECT.
+import sys, os
+sys.path.insert(1, os.path.join(os.path.dirname(__file__), "tested_tools"))
 ******************************************************
 ******************************************************
 ******************************************************

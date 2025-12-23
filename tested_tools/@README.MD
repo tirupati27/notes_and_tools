@@ -1,13 +1,87 @@
-# This directory contains all the tested tools of any programming language like python, html, js, css
+# tested_tools
 
-## each tools is in a separate file. and also each python function is in a separate file.
+`tested_tools` is a collection of **tested, reusable, and reliable tools** that can be directly used in projects.
+Each tool in this directory has been verified through practical usage and is intended to save development time by avoiding reimplementation of common functionality.
 
-## This folder can be used as a python package by following two method -
+This directory can be treated as a **lightweight Python package** and easily integrated into other projects.
 
-1. select the script you need and create your own package (see python notes to know how to do this)
-2. copy this folder and paste to your project and at the top of your main script add
+---
 
-`import sys, os
-sys.path.insert(1, os.path.realpath(os.path.join(__file__, "..", "tested_tools")))`
+## Purpose
 
-Note: THERE IS ONLY ONE SYS.PATH PER INTERPRETER PROCESS, AND BOTH THE MAIN SCRIPT AND ALL IMPORTED MODULES SEE THE SAME SYS.PATH OBJECT.
+- Store **production-ready** utilities
+- Reuse common tools across multiple projects
+- Maintain a clean separation between experiments and tested code
+- Provide quick access to frequently used helpers
+
+---
+
+## Usage
+
+You can use `tested_tools` in any Python project by adding it to your Python path.
+
+Add the following lines at the top of your Python script:
+
+```python
+import sys
+import os
+
+sys.path.insert(1, os.path.join(os.path.dirname(__file__), "tested_tools"))
+```
+
+After this, you can directly import any module from `tested_tools`:
+
+```python
+from my_tool import some_function
+```
+
+---
+
+## Structure Guidelines
+
+- Each tool should be placed in its **own file or folder**
+- Code must be:
+
+  - Tested
+  - Reusable
+  - Well-documented
+
+- Avoid experimental or unfinished code
+
+Example structure:
+
+```text
+tested_tools/
+├── file_utils.py
+├── string_helpers.py
+├── network_tools/
+│   └── downloader.py
+└── README.md
+```
+
+---
+
+## Supported Languages
+
+Although primarily used as a **Python utility package**, this folder may also contain tools written in other programming languages if they are:
+
+- Well-tested
+- Self-contained
+- Clearly documented
+
+---
+
+## Best Practices
+
+- Keep functions generic and configurable
+- Avoid hardcoded paths or values
+- Add docstrings and comments where necessary
+- Update this README when adding major tools
+
+---
+
+## Notes
+
+- This folder is intended for **stable tools only**
+- Experimental or learning code should go elsewhere
+- Tools here should be safe to reuse without modification
