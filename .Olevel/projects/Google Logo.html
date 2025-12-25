@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Google Logo</title>
+  <style type="text/css">
+    *{
+      margin: 0vh auto;
+      padding: 0vh;
+    }
+    body{
+      background: #f0f0f0;
+    }
+    div.box{
+      margin-top: 15vh;
+      width: 40vh;
+      height: 40vh;
+      background: conic-gradient(from -29deg at 16vh 23vh,red 0deg 90deg,blue 90deg 180deg,green 180deg 270deg, yellow 270deg 360deg);
+      background-clip: text;
+      box-shadow: 3px 3px 8px gray;
+      border-radius: 100%;
+    }
+    p{
+      text-align: center;
+      font: 36vh arial;
+      color: transparent;
+    }
+    div.t{
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>
+      G
+    </p>
+  </div>
+  <div class="t"></div>
+</body>
+<script>
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#d0d0d0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,20);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+</script>
+</html>

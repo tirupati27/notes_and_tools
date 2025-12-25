@@ -102,7 +102,7 @@ content_result, path_result, errors, total_files, skipped, time_taken, interrupt
 # Exit the program if no search result.
 if not content_result and not path_result:
     pprint("\nNo search results found!", attr="green+bold")
-    sys.exit()
+    sys.exit(0)
 
 # Fast access variables
 c_result_len      = len(content_result)
@@ -125,7 +125,7 @@ def show(I:int):
         I = total_match - 1
 
     # ===========================================
-    # 1. First page: errors + status panel
+    # 1. First page: errors + status panel  (The Dashboard)
     # ===========================================
     if (path_result and I < PER_PAGE_PATHS) or (I == 0):
         if errors:
@@ -146,11 +146,12 @@ def show(I:int):
             f"| Matches: {total_match} "
             f"| Skipped: {skipped} "
         )
-        print(f"Errors: {error_len}")
-        print(f"TimeTaken: {time_taken}s")
         print(f"Keyword: `{keyword}`")
         print(f'Directory: "{directory}"')
+        print(f"CaseSensitive: {case_sensitive}")
         print(f"Files having keyword: {files_having_kwrd}")
+        print(f"TimeTaken: {time_taken}s")
+        print(f"Errors: {error_len}")
 
     # ===========================================
     # 2. Path results
@@ -235,7 +236,7 @@ while True:
         exit_viewer()
 
     except SystemExit:
-        break   # sys.exit() Raises a SystemExit exception
+        break   # sys.exit(0) Raises a SystemExit exception
 
     except Exception as e:
         print("❌", e)

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>printing prime no between 1 to 100</title>
+</head>
+<body>
+<script type="text/javascript">
+let pcount=0;
+for(let i=1; i<=100; i++){
+if(i==2){document.write(i+"<br>");pcount++;}
+for(let n=2; n<i; n++){
+if(i%n==0){break;}
+if(i-n==1){document.write(i+"<br>");pcount++;}
+}
+}
+document.write("<hr>"+pcount);
+</script>
+</body>
+</html>

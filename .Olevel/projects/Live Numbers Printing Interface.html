@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Live Numbers Printing Interface V-1.0</title>
+  <style>
+    table{
+      display:none;
+      font-size: 11px;
+      border: solid black;
+      border-collapse: collapse;
+      height:100px;
+    }
+    th:nth-child(odd),td:nth-child(odd){
+      border: solid black;
+      background: #e2e2e2;
+    }
+    th:nth-child(even),td:nth-child(even){
+      border: solid black;
+      background: #d9d9d9;
+    }
+    td{
+      text-align: center;
+      color:red;
+      font-weight:bolder;
+    }
+    div{
+      display:inline-block;
+      background: #f0f0f0;
+      border-collapse:collapse;
+    }
+    #printSection{
+      margin-top:10px;
+      font-size: 11px;
+      border:2px inset;
+      padding: 5px;
+      padding-right:0;
+    }
+    #message{
+      background:#d8f8d8;
+      display:none;
+      margin: 5px;
+      padding:5px;
+      box-shadow:2px 2px 6px;
+    }
+    h1{
+      padding:10px;
+      background:#f9aaaa;
+      color:white;
+      margin-top:0;
+    }
+    button, input, select{
+      border:red solid;
+      border-radius:4px;
+    }
+    #interface{
+      padding:5px;
+      border:1px solid;
+      border-radius:4px;
+    }
+    #sequencial{
+      display:none;
+    }
+    div.t{
+      margin-bottom:550px;
+      display: block;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+<h1>Live Numbers printing Interface !!</h1>
+<section id="interface">
+<b>Choose a Number type:</b><br>
+<select id="option">
+  <option>Odd Number</option>
+  <option>Even Number</option>
+  <option>Prime Number</option>
+  <option>Composite Number</option>
+</select>
+<br>
+<b>Choose a Method:</b><br>
+<select id="method" onchange="switchMethod();">
+  <option>Random</option>
+  <option>Sequencial</option>
+</select>
+<br>
+<!---Dynamic interface start---->
+<span id="sequencial">
+  <b>Enter Lower Limit:</b><br>
+  <input type="number" id="lower"><br>
+  <b>Enter Upper Limit:</b><br>
+  <input type="number" id="upper">
+</span>
+<span id="random">
+<b>How Many Numbers can I print for you?</b><br>
+<input type="number" id="userInput">
+</span>
+<!----Dynamic interface End------>
+<button id="start" onclick="starter();">Start</button>
+<button id="stop" onclick="stopped();" style="display:none;background:pink;">Stop</button>
+</section>
+<p id="message"></p>
+  <table id="dataTable">
+    <tr>
+      <th colspan="11">Total Printed Numbers Between</th>
+    </tr>
+    <tr>
+      <th>0-100</th>
+      <th>100-200</th>
+      <th>200-300</th>
+      <th>300-400</th>
+      <th>400-500</th>
+      <th>500-600</th>
+      <th>600-700</th>
+      <th>700-800</th>
+      <th>800-900</th>
+      <th>900-1000</th>
+      <th>> 1000</th>
+    </tr>
+    <tr id="tdDisplay">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+<section id="printSection"></section>
+<div class="t"></div>
+<tt></tt>
+<script type="text/javascript">
+//All Element Variables (Global Scope)
+let option,method,userInput,lowerInput,upperInput,message,td,printSection,createElem,allDiv,allNumbering,dataTable,start,stop,BREAKER,lowerInput2,upperInput2;
+
+function starter(){
+//Holding Elements Into Variable. Start
+message=document.querySelector("#message");
+dataTable=document.querySelector("#dataTable");
+td=document.querySelectorAll("#tdDisplay>td");
+printSection=document.querySelector("#printSection");
+start=document.querySelector("#start");
+stop=document.querySelector("#stop");
+method=document.querySelector("#method").value;
+option=document.querySelector("#option").value;
+userInput=parseInt(document.querySelector("#userInput").value);
+lowerInput=parseInt(document.querySelector("#lower").value);
+upperInput=parseInt(document.querySelector("#upper").value);
+lowerInput2=lowerInput;
+upperInput2=upperInput;
+//Holding Elements Into Variable. End
+//Default Restoration. Start
+message.style.display="none";
+start.style.display="inline";
+stop.style.display="none";
+printSection.innerHTML="";
+dataTable.style.display="none";
+for(let tdd=0; tdd<td.length; tdd++){
+td[tdd].innerHTML="";}
+//Default Restoration. End
+
+if(method=="Sequencial"){
+ if(isNaN(lowerInput)&&isNaN(upperInput)||upperInput<lowerInput){
+  message.style.display="block";
+  message.innerHTML="Sorry! I didn't get any number to Print.";}
+ else if(isNaN(lowerInput)){
+   lowerInput=upperInput;
+   lowerInput2=lowerInput;
+   initialiser();}
+ else if(isNaN(upperInput)){
+   upperInput=lowerInput;
+   upperInput2=upperInput;
+   initialiser();}
+ else{initialiser();}
+}
+else {
+ if(userInput<1||isNaN(userInput)){
+  message.style.display="block";
+  message.innerHTML="Sorry! I didn't get any number to Print.";}
+ else{initialiser();}
+}
+}//starter() End
+
+
+function initialiser(){
+if(userInput>40||(upperInput2- lowerInput2)>80){
+window.scrollTo({ top: 220, behavior: 'smooth' });}
+let engine,rand,count,a,b,c,d,e,f,g,h,i,j,k,y,z,inputRand;
+let $t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+//Initialisation of Variables Start
+count=0;
+BREAKER=0;
+a=0;
+b=0;
+c=0;
+d=0;
+e=0;
+f=0;
+g=0;
+h=0;
+i=0;
+j=0;
+k=0;
+y=0;
+z=0;
+//Initialisation of Variables End
+dataTable.style.display="initial";
+stop.style.display="initial";
+start.style.display="none";
+//reSetting the value of upperInput. Start
+if(method=="Sequencial"){
+for(upperInput; upperInput>lowerInput; upperInput--){
+if(option=="Odd Number"){
+ if(upperInput%2!=0){break;}
+}
+if(option=="Even Number"){
+ if(upperInput%2==0){break;}
+}
+if(option=="Prime Number"){
+ if(isPrime(upperInput)){break;}
+}
+if(option=="Composite Number"){
+ if(!isPrime(upperInput)){break;}
+}
+}//loop End
+}
+//reSetting the value of upperInput. End
+//mainFunction() calling. start
+inputRand=(Math.random()*55).toFixed(0);
+if(userInput>inputRand||(upperInput2-lowerInput2)>inputRand){
+  printSection.innerHTML="<span style='font-family:monospace;font-size:20px;'>Initialising...</span>";
+  setTimeout(bridgeFun,900);}
+else{mainFunction();}
+function bridgeFun(){
+printSection.innerHTML="";
+mainFunction();
+}//bridgeFun()End
+//mainFunction() calling. End
+
+function mainFunction(){
+engineValue();
+if(rand==undefined){undefinedCase();return;}
+//Table Data Start
+if(rand<=100){a++;td[0].innerHTML=a;}
+else if(rand>100&&rand<=200){b++;td[1].innerHTML=b;}
+else if(rand>200&&rand<=300){c++;td[2].innerHTML=c;}
+else if(rand>300&&rand<=400){d++;td[3].innerHTML=d;}
+else if(rand>400&&rand<=500){e++;td[4].innerHTML=e;}
+else if(rand>500&&rand<=600){f++;td[5].innerHTML=f;}
+else if(rand>600&&rand<=700){g++;td[6].innerHTML=g;}
+else if(rand>700&&rand<=800){h++;td[7].innerHTML=h;}
+else if(rand>800&&rand<=900){i++;td[8].innerHTML=i;}
+else if(rand>900&&rand<=1000){j++;td[9].innerHTML=j;}
+else{k++;td[10].innerHTML=k;}
+//Table Data End
+count++;
+lowerInput++;
+//Div Creation. Start
+createElem=document.createElement("div");
+createElem.innerHTML="<span class='numbering'>"+count+". </span> "+rand;
+printSection.appendChild(createElem);
+allDiv=document.querySelectorAll("#printSection>div");
+allNumbering=document.querySelectorAll(".numbering");
+//Div Creation. End
+//concluder() calling. Start
+if(method=="Sequencial"){
+ if(rand==upperInput||BREAKER==1){
+ formatting(0,0);
+ setTimeout(concluder,1180);
+ return;}
+}
+else{
+ if(count==userInput||BREAKER==1){
+ formatting(0,0);
+ setTimeout(concluder,1180);
+ return;}
+}
+//concluder() calling. End
+formatting((Math.random()*150).toFixed(0),(Math.random()*150).toFixed(0));
+if(count%70==0){
+window.scrollBy({ top: 350, left: 0, behavior: 'smooth' });}
+//reCalling the function. Start
+if(method=="Sequencial"){
+ if((upperInput-lowerInput)<150){
+ setTimeout(mainFunction,(Math.random()*350).toFixed(0));}
+ else{setTimeout(mainFunction,(Math.random()*150).toFixed(0));}
+}
+else {
+ if(userInput<300){
+ setTimeout(mainFunction,(Math.random()*350).toFixed(0));}
+ else{setTimeout(mainFunction,(Math.random()*150).toFixed(0));}
+}
+//reCalling the function. End
+}//mainFunction()End
+
+function concluder(){
+for(let x=0; x<count; x++){
+  allDiv[x].style.background="#f8d8d8";
+  allDiv[x].style.border="1px solid";}
+  message.style.display="block";
+/*Output message showing. Start*/
+if(method=="Sequencial" && lowerInput2==upperInput2){
+message.innerHTML="<b>Yes!</b> "+lowerInput2+" is a "+option;}
+else if(method=="Sequencial"&&BREAKER==0){
+message.innerHTML="✅ It's done 🤩 "+"There are "+count+" "+option+", Between "+lowerInput2+" and "+upperInput2+".";}
+else if(method=="Sequencial"&&BREAKER==1){
+message.innerHTML="<b>hmm!</b> "+count+" "+option+"s are there between "+lowerInput2+" and "+rand+".";}
+else{message.innerHTML="✅ It's done 🤩 "+count+" "+option+" Printed Successfully.";}
+/*Output message showing. End*/
+stop.style.display="none";
+start.style.display="inline";
+BREAKER=0;
+document.querySelector("tt").innerHTML=$t+"<br><b>Note: </b>To check if a number is prime or not, choose method as Sequencial then enter that number into any of the field and keep another field blank.";
+if(count>40){
+window.scrollTo({ top: 125, behavior: 'smooth' });}
+}//concluder()End
+
+function formatting(neg1,neg2){
+for(y; y<count-neg1; y++){
+  allDiv[y].style.width="62px";
+  allDiv[y].style.height="25px";}
+for(z; z<count-neg2; z++){
+  allNumbering[z].style.background="yellow";
+  allNumbering[z].style.borderRadius="12px";}
+}//formatting()End
+
+
+function engineValue(){
+if(method=="Sequencial"){
+engine=lowerInput;}
+else{
+engine=(Math.random()*((Math.random()*10000).toFixed(0))).toFixed(0);
+upperInput=Infinity;}
+for(engine; engine<=upperInput; engine++){
+if(option=="Odd Number"){
+ if(engine%2!=0){
+ lowerInput=engine;
+ rand=engine;break;}
+}
+if(option=="Even Number"){
+ if(engine%2==0){
+ lowerInput=engine;
+ rand=engine;break;}
+}
+if(option=="Prime Number"){
+ if(isPrime(engine)){
+ lowerInput=engine;
+ rand=engine;break;}
+}
+if(option=="Composite Number"){
+ if(!isPrime(engine)&&engine>=4){
+ lowerInput=engine;
+ rand=engine;break;}
+}
+}//loop End
+}//engineValue() End
+
+function isPrime(p){
+if(p<2){return false;}
+for(let i=2; i<=Math.sqrt(p); i++){
+if(p%i==0){return false;}
+}
+return true;
+}//isPrime() End
+
+function undefinedCase(){
+printSection.innerHTML="";
+dataTable.style.display="none";
+start.style.display="inline";
+stop.style.display="none";
+message.style.display="block";
+if(lowerInput2==upperInput2){
+message.innerHTML=lowerInput2+" is <b>NOT</b> a "+option;}
+else{message.innerHTML="There is NO any "+option+" between "+lowerInput2+" and "+upperInput2;}
+}//undefinedCase() End
+}//initialiser() End
+
+function switchMethod(){
+if(document.querySelector("#method").value=="Random"){
+  document.querySelector("#random").style.display="initial";
+  document.querySelector("#sequencial").style.display="none";
+  document.querySelector("#lower").value="";
+  document.querySelector("#upper").value="";
+}
+else{
+  document.querySelector("#sequencial").style.display="initial";
+  document.querySelector("#random").style.display="none";}
+  document.querySelector("#userInput").value="";
+}//switchMethod() End
+
+function stopped(){
+BREAKER=1;
+}//stopped() End
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#d0d0d0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,20);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+</script>
+</body>
+</html>

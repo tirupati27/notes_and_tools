@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Checking Prime No.</title>
+</head>
+<body>
+  <h1 align="center">Checking Prime Number</h1>
+  <input type="number"><br><br>
+  <button onclick="fun1();">Check</button>
+<div class="t"></div>
+<script>
+  function isPrime(p){
+  if(p<2){return false;}
+    for(let i=2; i<=Math.sqrt(p); i++){
+    if(p%i==0){return false;}
+    }
+    return true;
+}
+function fun1(){
+  let n=parseInt(document.querySelector("input").value);
+   let para= document.createElement("p");
+  if(isPrime(n)){
+   para.innerHTML=n+" is a <font color='green'>Prime Number</font>";
+   document.body.appendChild(para);
+  }
+  else{
+   para.innerHTML=n+" is <font color='red'>NOT</font> a prime Number";
+   document.body.appendChild(para);
+  }
+}
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#e0e0e0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,20);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+ </script>
+</body>
+</html>

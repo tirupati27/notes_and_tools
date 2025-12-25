@@ -1,0 +1,5 @@
+x=input("enter any decimal number: ")
+x=int(x, base=10)
+print("The binary of your number is: ",bin(x))
+print("The octal of your number is: ",oct(x))
+print("The Hexa-decimal of your number is: ",hex(x))

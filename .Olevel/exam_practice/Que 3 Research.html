@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Counting Prime Numbers</title>
+<style type="text/css">
+.con{
+margin:0 auto;
+padding:30px;
+background:#d3d3d3;
+display:inline-block;
+border-radius:10px;
+}
+
+</style>
+</head>
+<body>
+<div class="con">
+<input id="min"><br>
+<input id="max"><br>
+<button onclick="">Calculate</button>
+</div>
+<hr>
+<div class="res">
+</div>
+</body>
+<script type="text/javascript">
+let ti=document.createElement("span");
+ti.innerHTML="Tirupati";
+let inp=document.querySelector(".res");
+function fun1(p){
+if(p==2){inp.innerHTML=p+"<br>";}
+else{for(let n=2; n<p; n++){
+if(p%n==0){break;}
+if(p-n==1){inp.innerHTML=p+"<br>";}}//loopEnd
+}
+}//fun1Closed
+function fun2(){inp.appendChild(ti);}
+setInterval(fun2,300);
+</script>
+</html>
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Calculating sales price</title>
+</head>
+<body bgcolor="#d3d3d3">
+<h1>Calculating sales price</h1>
+<form style="display:inline-block; background:white; border-radius:15px; padding:30px;">
+<table cellspacing="0" height="200px">
+<tr>
+<td>Name of User:</td>
+<td><input></td>
+</tr>
+<tr>
+<td>Sales Price of Item:</td>
+<td><input type="number" id="price"></td>
+</tr>
+<tr>
+<td>Quantity:</td>
+<td><input type="number" id="qtn"></td>
+</tr>
+<tr>
+<td>Discount price:</td>
+<td><input type="number" id="dis"></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="button" onclick="fun();" value="Calculate"></td>
+</tr>
+<tr>
+<td>Net sales Price:</td>
+<td><input id="netprice"></td>
+</tr>
+</form>
+
+<script type="text/javascript">
+function fun(){
+let price, qnt, dis;
+price=parseInt(document.getElementById("price").value);
+qtn=parseInt(document.getElementById("qtn").value);
+dis=parseInt(document.getElementById("dis").value);
+document.getElementById("netprice").value=price*qtn-dis;
+}
+</script>
+</body>
+</html>
+
+

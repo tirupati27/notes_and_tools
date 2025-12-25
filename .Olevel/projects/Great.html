@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-sclae=1.0">
+    <title>TIRUPATI</title>
+    <style type="text/css">
+   *
+    {
+      -webkit-print-color-adjust: exact;
+      padding:0%;
+      margin:0%;
+      text-align: center;
+    }
+   body
+   {
+      margin:1.5%;
+     background: linear-gradient(to bottom right, orange, pink, cyan);
+     border: 4px outset;
+   }
+   input
+   {
+     margin:3%;
+     width:26%;
+     height:12%;
+   }
+   button
+   {
+     margin:4%;
+     color:white;
+     border-radius:30%;
+     width:27%;
+     height:15%;
+     background:salmon;
+   }
+   h2
+   {
+     border: solid;
+   }
+   #num4
+   {
+     width: 75%;
+     height: 12%;
+   }
+   div.interface
+   {
+     margin-top:8%;
+     padding:10%;
+     padding-bottom:0;
+     width:80%;
+     height:35%;
+   }
+   div.t{
+     margin-top: 200px;
+   }
+    </style>
+  </head>
+<body>
+  <h2>Greatest Among 3 Numbers</h2><br>
+  <h1>2.0</h1>
+  <div class="interface">
+  a:<input id="num1" type="number" onchange="fun1()"><br>
+  b:<input id="num2" type="number" onchange="fun1()"><br>
+  c:<input id="num3" type="number" onchange="fun1()"><br>
+  <button onclick="fun1();" type="submit">RESULT</button><br>
+  <input id="num4">
+  </div>
+<div class="t"></div>
+<script type="text/javascript">
+  function fun1(){
+  var a, b, c;
+  a=num1.value;
+  b=num2.value;
+  c=num3.value;
+  if(a==""){a=0;}
+  if(b==""){b=0;}
+  if(c==""){c=0;}
+  a=parseFloat(a);
+  b=parseFloat(b);
+  c=parseFloat(c);
+if(a>b)
+{
+  if(a>c)
+  {
+    num4.value="a is Greater.";
+  }
+  if(a<c)
+  {
+    num4.value="c is Greater.";
+  }
+  if(a==c)
+  {
+    num4.value="a & c Both are Equally Greater.";
+  }
+}
+
+if(b>a)
+{
+  if(b>c)
+  {
+    num4.value="b is Greater.";
+  }
+  if(b<c)
+  {
+    num4.value="c is Greater.";
+  }
+  if(b==c)
+  {
+    num4.value="b & c Both are Equally Greater.";
+  }
+}
+if(a==b)
+{
+  if(c>a)
+  {
+    num4.value="c is Greater.";
+  }
+  if(c<a)
+  {
+    num4.value="a & b Both are Equally Greater.";
+  }
+  if(c==a)
+  {
+    num4.value="All The Numbers are Equal.";
+  }
+}
+}
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.color="white";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#e0e0e0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,20);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+  </script>
+  </body>
+  </htmt>

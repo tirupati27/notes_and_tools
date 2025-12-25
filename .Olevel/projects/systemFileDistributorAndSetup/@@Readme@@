@@ -1,0 +1,14 @@
+1. DON'T REMOVE ANY FILE FROM THIS DIRECTORY
+
+  --because these are original files and don't have backup 
+
+
+2. DON'T RENAME ANY FILE OF THIS DIRECTORY
+
+  --because some python files are imported,and some file names are used in the python program..so renaming may cause errors in the program and setup 
+  
+3. These all files are inter-dependent, so rather than moving one file move the parent folder
+
+4. The file 'd' is shortcut of file 'Distributor.py', both are same
+
+5. Dont't Modify the file 'Distributor.py' only modify its database file i.e 'Distributor_database.py'

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tirupati</title>
+  <style type="text/css">
+   *{
+      padding:0;
+      margin:0;
+      text-align: center;
+    }
+   body{
+      margin:5px;
+      background: linear-gradient(to bottom right, #efccaa,#bbb, #efccaa);
+      border: 4px outset;
+      padding-bottom:200px;
+   }
+   input{
+     margin:10px;
+     width:70px;
+     height:25px;
+   }
+   button{
+     color:white;
+     border-radius:10px;
+     padding:10px;
+     background:#efccaa;
+     margin-top: 30px;
+   }
+   h2{
+     border: solid;
+     padding: 5px;
+   }
+   div.interface{
+     padding: 30px;
+   }
+   form{
+     padding:10px;
+     border:solid;
+     box-shadow: 2px 2px 5px white;
+   }
+   form>p{
+     color: red;
+   }
+  </style>
+</head>
+<body>
+
+  <h2>Root Calculator for Quadratic Equations</h2>
+  <br>
+  <div class="stdform" onclick="subt()">
+    <b>Standard form</b>:<br>
+    ax<sup>2</sup> + bx + c
+  </div>
+  <div class="interface">
+  <form action="/calculate" method="POST">
+  Enter the value of coefficient a:
+  <input oninput="sreal(this);" required pattern="^[0-9]+|[0-9]*\.[0-9]+|-([0-9]+|[0-9]*\.[0-9]+)$" name="a"><br>
+  Enter the value of coefficient b:
+  <input oninput="testFun(1);" required pattern="^[0-9]+|[0-9]*\.[0-9]+|-([0-9]+|[0-9]*\.[0-9]+)$" name="b"><br>
+  Enter the value of coefficient c:
+  <input oninput="testFun(2);" required pattern="^[0-9]+|[0-9]*\.[0-9]+|-([0-9]+|[0-9]*\.[0-9]+)$" name="c"><br>
+  <p id="message"></p>
+  <button type="submit" id="subButton">Calculate</button>
+  </form>
+  </div>
+
+<script type="text/javascript">
+/*function testFun(i){
+let input=document.querySelectorAll("form>input");
+  if(! input[i].checkValidity()){
+    document.getElementById("message").innerHTML="Enter a valid number";
+  }
+  else{
+    document.getElementById("message").innerHTML="";
+  }
+  console.log("hey")
+}*/
+
+function sreal(hey){
+hey.setCustomValidity("Dont submit");
+}
+</script>
+</body>
+</htmt>

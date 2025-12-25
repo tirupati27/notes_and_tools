@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tirupati</title>
+<style>
+body{
+  font-size: 18px;
+}
+input{
+    display: block;
+    margin:0 auto;
+}
+textarea{
+  width: 95%;
+  height: 100px;
+}
+[value="Stop"]{
+  display: none;
+}
+[type="range"]{
+  width: 250px;
+}
+p.notice{
+  color: red;
+  display: none;
+}
+section.print{
+  word-break: break-word;
+}
+span.clear{
+  font-family: Monospace;
+  font-size: 12px;
+  color: #d0d0d0;
+}
+</style>
+</head>
+<body>
+<textarea placeholder="Enter The Text To Print Like An AI"></textarea>
+<input value="Click Me" type="button" onclick="hide();">
+<input value="Stop" type="button" onclick="show();">
+<p class="notice">Please enter any data !!</p>
+<section class="print"></section>
+<br>
+<br>
+<br>
+<input type="range" min="0" max="490" step="10">
+<span class="clear">*Control the output Speed with the slider</span>
+<br>
+<span class="clear" ondblclick="clrscr();">*Type "clear" or <b>double click me</b> to Clear the Screen</span>
+<div class="t"></div>
+</body>
+<script>
+let count, ele, n0,text,breaker,printSection;
+printSection=document.querySelector('section.print');
+textarea=document.querySelector('textarea');
+breaker=0;
+count=0;
+function tt(){
+n0=(Math.random()*(500-(document.querySelector('[type="range"]').value))).toFixed(0);
+ele=document.createElement('span');
+ele.innerHTML=text[count];
+if(text[count]=="\n"){
+  ele.innerHTML="<br>";}
+if(text[count]=="\t"){
+  ele.innerHTML="&ensp;&ensp;&ensp;&ensp;";}
+if(text[count]==" "){
+  ele.innerHTML="&ensp;";}
+printSection.appendChild(ele);
+count++;
+if(count==text.length||breaker==1){
+  show();
+  count=0;
+  breaker=0;
+  ele=document.createElement('hr');
+  printSection.appendChild(ele);
+  return;
+}
+setTimeout(tt,n0);
+}//tt(); closed
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#d0d0d0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,20);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+function hide(){
+text=textarea.value;
+if(text.toUpperCase()=="CLEAR"||text.toUpperCase()=="CLEAR "){printSection.innerHTML="";}
+else if(text==""){document.querySelector('p').style.display="block";}
+else{
+document.querySelector('[value="Click Me"]').style.display="none";
+ document.querySelector('[value="Stop"]').style.display="block";
+ document.querySelector('p').style.display="none";
+ tt();}
+}//hide();End
+function show(){
+document.querySelector('[value="Click Me"]').style.display="block";
+document.querySelector('[value="Stop"]').style.display="none";
+breaker=1;
+}
+function clrscr(){
+printSection.innerHTML="";
+document.querySelector('p.notice').style.display="none";
+}
+</script>
+</html>

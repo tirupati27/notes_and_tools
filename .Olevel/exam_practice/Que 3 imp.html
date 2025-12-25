@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JavaScript</title>
+</head>
+<body>
+<script type="text/javascript">
+let countPrime=0, countEven=0, countOdd=0, isprime;
+for(let i=1; i<=100; i++){
+if(i%2==0){
+countEven=countEven+1;
+}
+
+if(i%2!=0){
+countOdd=countOdd+1;
+}
+
+if(i==2){
+countPrime=countPrime+1;
+}
+
+if(i>2){
+for(let n=2; n<i; n++){
+if(i%n==0){isprime=false; break;}
+isprime=true;}
+}
+if(isprime==true){countPrime=countPrime+1;}
+}
+document.write("No. of Even Numbers are: "+countEven+"<br>");
+document.write("No. of Odd Numbers are: "+countOdd+"<br>");
+document.write("No. of Prime Numbers are: "+countPrime+"<br>");
+</script>
+</body>
+</html>

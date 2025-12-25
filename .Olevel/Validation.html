@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Validation</title>
+  <style>
+    input {
+
+      margin-bottom: 5px;
+    }
+    div.t{
+      margin-top: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>HTML form with Validation</h1>
+  <form>
+    <label for="name">Name: </label>
+    <input id="name"><br>
+    <label for="class">Class: </label>
+    <input id="class"><br>
+    <label for="dob">DOB: </label>
+    <input type="date" id="dob"><br>
+    <label for="mob">Mobile No.: </label>
+    <input type="tel" id="mob"><br>
+    <label for="email">Email: </label>
+    <input type="email" id="email"><br>
+    <label for="pass">Password: </label>
+    <input type="password" id="pass"><br>
+  </form>
+<div class="t"></div>
+  <script type="text/javascript">
+    let input = document.querySelectorAll("input");
+    for (let i = 0; i < input.length; i++) {
+      input[i].addEventListener("change", fun);
+    }
+    function fun() {
+      input[0].value = "All is well";
+    }
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#d0d0d0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,20);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+  </script>
+</body>
+</html>

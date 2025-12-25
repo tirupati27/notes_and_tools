@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Checking Prime Numbers Between</title>
+</head>
+<body>
+  <h1 align="center">Checking Prime Numbers</h1>
+  Lower Limit: <input type="number" id="lower"><br><br>
+  Upper Limit: <input type="number" id="upper"><br><br>
+  <button onclick="fun1();">Check</button>
+  <div class="t"></div>
+  <span style="display:none; color:red; font-size:10px;" id="warning">*Upper Limit should be greater than Lower Limit</span><br><br>
+  <div id="total" style="background:pink; display:inline-block;"></div>
+  <div id="result-show">
+  </div>
+  <script>
+    function isPrime(p) {
+      if (p < 2) {
+        return false;
+      }
+      for (let i = 2; i <= Math.sqrt(p); i++) {
+        if (p%i == 0) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function fun1() {
+      document.getElementById("result-show").innerHTML="";
+
+      var count = 0;
+      let lower = parseInt(document.querySelector("#lower").value);
+      let upper = parseInt(document.querySelector("#upper").value);
+      if (lower >= upper) {
+        document.querySelector("#warning").style.display = "initial";
+      }
+      for (let j = lower; j <= upper; j++) {
+        let para = document.createElement("p");
+        if (isPrime(j)) {
+          count++;
+          para.innerHTML = "<span style='border-radius:7px; background:yellow;'>"+j+"</span>"+" is a <font color='green'>Prime Number</font>";
+          document.getElementById("result-show").appendChild(para);
+        }
+        /* else{
+   para.innerHTML=j+" is <font color='red'>NOT</font> a prime Number";
+   document.body.appendChild(para);
+  }*/
+      }
+      document.querySelector("#total").innerHTML = "Total "+count+" Prime Numbers";
+      let hr = document.createElement("hr");
+      document.getElementById("result-show").appendChild(hr);
+    }
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#d0d0d0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,50);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+</script>
+</body>
+</html>

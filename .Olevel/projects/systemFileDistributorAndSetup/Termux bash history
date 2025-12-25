@@ -1,0 +1,5 @@
+cd '/storage/emulated/0/@@A-CODE/template/systemFileDistributorAndSetup'
+pkg update && pkg upgrade -y
+exit
+proot-distro login ubuntu
+python a

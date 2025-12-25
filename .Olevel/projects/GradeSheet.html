@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="watermarkid1"></title>
+  <style type="text/css">
+ /*--------SECTION_1-----------*/
+    h1, h3, h5, p{
+      text-align:center;
+    }
+    div.box{
+      margin:1%;
+      padding:7%;
+      border:1px solid red;
+      box-shadow:3px 3px 8px;
+     background: linear-gradient(to bottom right, pink, #f2ff63, aqua);
+    }
+    #i1st,#i2nd,#i3rd,#i4th,#i5th,#i6th,#size{
+      width:16%;
+      height:23px;
+    }
+    input, select{
+      margin-bottom: 3%;
+    }
+    #span{
+      border:1px solid;
+      padding: 1%;
+      padding-top: 2%;
+    }
+    #select-gradi{
+      margin-left: 30%;
+    }
+   button{
+     border-radius:14px;
+     width:80px;
+     height:37px;
+     font-weight:bold;
+   }
+/*--------SECTION_2-----------*/
+   #section2{
+     -webkit-print-color-adjust: exact;
+     width: calc(100%-9%-20px);
+     aspect-ratio:1/1.4142;
+     margin:0;
+     padding:9%;
+     padding-top:;
+     border: 1px solid;
+     
+   }
+   #watermarkid3{
+     font-size:10px;
+   }
+   th,td{
+     border: 1px solid;
+     word-break: break-word;
+   }
+   table{
+     margin: 0 auto;
+     padding: 0;
+     border: 1px solid;
+     border-collapse: collapse;
+     width:100%;
+     aspect-ratio: 1/0.8;
+     box-shadow:3px 3px 8px;
+   }
+  </style>
+</head>
+<body>
+  
+<!--*********SECTION_1**********-->
+
+<section id="section1">
+<h1>Grade Sheet Printer</h1>
+<!-----Data Entry Layout---->
+<div class="box">
+<h3>Data Entry</h3>
+Name : <input id="iname" placeholder="Your Name"><br>
+Course : <input id="icourse" value="Bachelor Of Science (Maths)"><br>
+1<sup>st</sup> Sem. : <input id="i1st" type="number" placeholder="SGPA"><br>
+2<sup>nd</sup> Sem. : <input id="i2nd" type="number" placeholder="SGPA"><br>
+3<sup>rd</sup> Sem. : <input id="i3rd" type="number" placeholder="SGPA" value="8.0"><br>
+4<sup>th</sup> Sem. : <input id="i4th" type="number" placeholder="SGPA"><br>
+5<sup>th</sup> Sem. : <input id="i5th" type="number" placeholder="SGPA" value="8.0"><br>
+6<sup>th</sup> Sem. : <input id="i6th" type="number" placeholder="SGPA"><br>
+</div>
+<div class="t"></div>
+<!--Theme Customization Layout--->
+<div class="box">
+<h3><u>Theme Customization</u></h3>
+<h5>Border</h5>
+Border-Style : 
+<select id="select">
+  <option>dotted</option>
+  <option>double</option>
+  <option>solid</option>
+  <option>dashed</option>
+  <option>outset</option>
+  <option>groove</option>
+  <option>none</option>
+</select><br>
+Border-Colour : <input id="col1" type="color" value="#ff0000"><br>
+<span>Table's Border-Colour : <input id="col2" type="color" value="#0000ff"></span><br>
+Border-Size : <input id="size" type="number" value="7"><br>
+<h5>Text-Colour</h5>
+Main-Heading : <input id="col3" type="color" value="#ff0000"><br>
+<span>Headings : <input id="col4" type="color" value="#000000"><br></span>
+Other-Text : <input id="col5" type="color" value="#800000"><br>
+<h5>Background-Colour</h5>
+For Page : <input id="col6" type="color"  value="#ccffdd"><br>
+For Table : 
+<span id="span">
+  <input id="col7" type="color"  value="#FFA500">
+  <input id="col8" type="color"  value="#FFffff">
+  <input id="col9" type="color"  value="#ffff80">
+</span><br>
+ <select id="select-gradi">
+   <option>linear-gradient</option>
+   <option>radial-gradient</option>
+ </select>
+</div>
+<!-----Print Preview Button---->
+<p><button onclick="fun1();">Print Preview</button><br><br><br><br></p>
+</section>
+
+<!--*********SECTION_2**********-->
+
+<section id="section2">
+ <!-----Section_2's Page Title---->
+  <title id="watermarkid2"></title>
+<!-----Section_2's Page Table Data ---->
+<table id="table">
+  <tr id="row1">
+    <th colspan="4" id="td"><h1>Grade Sheet</h1></th>
+  </tr>
+  <tr id="row2">
+    <td class="td"><b>Name :</b></td>
+    <td id="name" colspan="3"></td>
+  </tr>
+  <tr id="row3">
+    <td class="td"><b>Course :</b></td>
+    <td id="course" colspan="3"></td>
+  </tr>
+  <tr id="row4">
+    <td class="td"><b>Overall CGPA :</b></td>
+    <td id="cgpa" colspan="3"></td>
+  </tr>
+  <tr id="row5">
+    <th colspan="4" class="td"><b>SGPA</b></th>
+  </tr>
+  <tr id="row6">
+    <td width="30%" class="td"><b>1<sup>st</sup> Semester :</b></td>
+    <td width="20%" id="1st"></td>
+    <td width="30%" class="td"><b>2<sup>nd</sup> Semester :</b></td>
+    <td width="20%" id="2nd"></td>
+  </tr>
+  <tr id="row7">
+    <td class="td"><b>3<sup>rd</sup> Semester :</b></td>
+    <td id="3rd"></td>
+    <td class="td"><b>4<sup>th</sup> Semester :</b></td>
+    <td id="4th"></td>
+  </tr>
+  <tr id="row8">
+    <td class="td"><b>5<sup>th</sup> Semester :</b></td>
+    <td id="5th"></td>
+    <td class="td"><b>6<sup>th</sup> Semester :</b></td>
+    <td id="6th"></td>
+  </tr>
+</table>
+<span id="watermarkid3"></span>
+<!--Section_2's page Print button--->
+<p id="printbutton"><button onclick="window.print(); fun2();">Print</button></p>
+<!--Section_2's page Go Back button-->
+<p id="goback"><button onclick="location.reload();">Go Back</button></p>
+</section>
+</body>
+
+<!-----The JavaScript---->
+
+<script type="text/javascript">
+/*---Watermark through JavaScript---*/
+let $t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+document.getElementById("watermarkid1").innerText=$t;
+document.getElementById("watermarkid2").innerText=$t;
+document.getElementById("watermarkid3").innerText=$t;
+document.getElementById("iname").value=$t;
+/*---Function 1 passing values and theme customisation---*/
+function fun1(){
+/*---Passing the Values to the table fields---*/
+document.getElementById("name").innerText=document.getElementById("iname").value;
+document.getElementById("course").innerText=document.getElementById("icourse").value;
+let aa=parseFloat(document.getElementById("i1st").value);
+let bb=parseFloat(document.getElementById("i2nd").value);
+let cc=parseFloat(document.getElementById("i3rd").value);
+let dd=parseFloat(document.getElementById("i4th").value);
+let ee=parseFloat(document.getElementById("i5th").value);
+let ff=parseFloat(document.getElementById("i6th").value);
+let gg=((aa+bb+cc+dd+ee+ff)/6);
+document.getElementById("cgpa").innerText=gg.toFixed(2);
+document.getElementById("1st").innerText=aa;
+document.getElementById("2nd").innerText=bb;
+document.getElementById("3rd").innerText=cc;
+document.getElementById("4th").innerText=dd;
+document.getElementById("5th").innerText=ee;
+document.getElementById("6th").innerText=ff;
+/*---Theme Customization---*/
+/*---Border---*/
+document.getElementById("section2").style.borderStyle=document.getElementById("select").value;
+document.getElementById("section2").style.borderColor=document.getElementById("col1").value;
+document.getElementById("table").style.borderColor=document.getElementById("col2").value;
+document.getElementById("section2").style.borderWidth=(document.getElementById("size").value+"px");
+/*---Text Colors---*/
+document.getElementById("td").style.color=document.getElementById("col3").value;
+let ssgs=document.querySelectorAll(".td");
+ssgs.forEach(ssgs => {
+  ssgs.style.color=document.getElementById("col4").value});
+document.getElementById("table").style.color=document.getElementById("col5").value;
+document.getElementById("watermarkid3").style.color=document.getElementById("col5").value;
+/*---Background color---*/
+document.getElementById("section2").style.backgroundColor=document.getElementById("col6").value;
+let sp1=document.getElementById("col7").value;
+let sp2=document.getElementById("col8").value;
+let sp3=document.getElementById("col9").value;
+let sp4=document.getElementById("select-gradi").value;
+let lgradient="linear-gradient(to bottom right, "+sp1+", "+sp2+", "+sp3+")";
+let rgradient="radial-gradient("+sp1+", "+sp2+", "+sp3+")";
+if(sp4==="linear-gradient"){document.getElementById("table").style.backgroundImage=lgradient;}
+if(sp4==="radial-gradient"){document.getElementById("table").style.backgroundImage=rgradient;}
+document.getElementById("section1").setAttribute("hidden","");
+document.getElementById("section2").removeAttribute("hidden");
+}
+/*---Function 2 for hiding the print and GoBack button---
+function fun2(){
+document.getElementById("printbutton").setAttribute("hidden","");
+document.getElementById("goback").setAttribute("hidden","");
+}
+function fun3(){
+let print=document.getElementById("section2").setAttribute("hidden","");
+let print=document.getElementById("section1").removeAttribute("hidden");
+}*/
+//$tfun START
+function $tfun(){
+//make a div tag having class name 't'
+let $tele,$t,$div;
+$div=document.querySelector("div.t");
+$div.style.fontFamily="Monospace";
+$div.style.fontSize="50px";
+$div.style.textAlign="center";
+$t=[String.fromCharCode(169),String.fromCharCode(84),String.fromCharCode(73),String.fromCharCode(82),String.fromCharCode(85),String.fromCharCode(80),String.fromCharCode(65),String.fromCharCode(84),String.fromCharCode(73)];
+$tele=document.createElement('span');
+$tele.innerHTML=$t[$tcount];
+$div.appendChild($tele);
+$tcount++;
+if($tcount==$t.length){
+$tcount=50;
+setTimeout($tshrink,1200);
+return;}
+setTimeout($tfun,250);
+function $tshrink(){
+  $div.style.textAlign="left";
+  $div.style.color="#d0d0d0";
+  $div.style.fontSize=$tcount+'px';
+  $tcount--;
+  if($tcount==14){
+   return;}
+  setTimeout($tshrink,20);}}
+let $tcount=0;
+$tfun();
+//$tfun();Closed
+</script>
+</html>

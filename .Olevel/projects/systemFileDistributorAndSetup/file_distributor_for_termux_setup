@@ -1,0 +1,6 @@
+from distributor_database import file_data
+from Distributor import distributor
+
+
+for f in file_data:
+  distributor(f)

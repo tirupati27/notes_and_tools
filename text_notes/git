@@ -1,2 +1,13 @@
 #!/bin/bash
 ******************************************************
+# github api for repo information
+https://api.github.com/users/tirupati27/repos?per_page=100&page=1
+******************************************************
+# Note: behavior of '.gitignore' file
+# Git’s .gitignore patterns are recursive by default
+config.json → ignore that filename everywhere
+__pycache__/ → ignore that directory everywhere
+/config.json → ignore Only root-level config.json
+******************************************************
+******************************************************
+******************************************************

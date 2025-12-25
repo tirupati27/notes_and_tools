@@ -1,0 +1,43 @@
+<!--script>
+  let check;
+  function isPrime(p) {
+    if (p < 2) {
+      check = "false";
+    } else if (p == 2) {
+      check = "true";
+    } else {
+      for (let i = 2; i < p; i++) {
+        if (p%i == 0) {
+          check = "false"; break;
+        } else {
+          check = "true";
+        }
+      }
+    }
+  }
+  isPrime(13);
+  document.write(check);
+</script-->
+
+
+
+<script>
+  let check;
+  function isPrime(p) {
+    if (p < 2) {
+      return false;
+    } else if (p == 2) {
+      return true;
+    } else {
+      for (let i = 2; i < p; i++) {
+        if (p%i == 0) {
+          return false; break;
+        } else {
+          return true;
+        }
+      }
+    }
+  }
+  check = isPrime(9);
+  document.write(check);
+</script>

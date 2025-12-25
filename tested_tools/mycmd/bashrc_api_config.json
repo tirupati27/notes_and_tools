@@ -1,0 +1,74 @@
+{
+  "PS1": {
+    "name": "Tirupati",
+    "name_attr": "",
+    "cwd_attr": ""
+  },
+
+  "aliases": {
+    "python": "python3",
+    "activate": "source ~/pyenv/bin/activate",
+    "search": "python3 '$__SCRIPT_DIR__/../search.py'",
+    "ll": "ls -lha --color=auto",
+    "reload-bashrc": "source '$__SCRIPT_DIR__/custom_bashrc.sh'",
+    "edit-search-config": "nano '$__SCRIPT_DIR__/../config.json'",
+    "edit-ls-color": "nano '$__SCRIPT_DIR__/provide_ls_colors.py'"
+  },
+
+  "LS_COLORS": {
+    "rs: reset all colors to terminal defaults": "RESET",
+    "no: normal regular file fallback": "normal_text",
+
+    "di: directory": "blue+bold",
+    "tw: world-writable directory with sticky bit": "blue+italic",
+    "ow: world-writable directory without sticky bit": "blue+underline",
+    "st: directory with sticky bit only": "blue+bold+italic",
+
+    "ln: symbolic link": "cyan",
+    "or: broken symbolic link": "red+underline",
+    "mi: missing file target of symlink": "red+italic",
+
+    "fi: regular non-executable file": "white",
+    "ex: executable file": "green+bold",
+    "mh: file with multiple hard links": "yellow",
+
+    "pi: named pipe FIFO": "magenta",
+    "so: socket file": "magenta+bold",
+    "do: Solaris door IPC object": "magenta+underline",
+
+    "bd: block device file": "yellow+bold",
+    "cd: character device file": "yellow+italic",
+
+    "su: setuid executable": "red+bold",
+    "sg: setgid executable": "red+italic",
+    "ca: file with Linux capabilities": "red+underline",
+
+    "*.tar": "blue",
+    "*.gz": "blue",
+    "*.zip": "blue",
+    "*.7z": "blue",
+    "*.rar": "blue",
+
+    "*.jpg": "magenta",
+    "*.jpeg": "magenta",
+    "*.png": "magenta",
+    "*.gif": "magenta",
+
+    "*.mp3": "cyan",
+    "*.m4a": "cyan",
+    "*.opus": "cyan",
+    "*.aac": "cyan",
+
+    "*.mp4": "cyan+bold",
+    "*.mkv": "cyan+bold",
+
+    "*.json": "yellow",
+    "*.yaml": "yellow",
+    "*.yml": "yellow",
+    "*.toml": "yellow",
+
+    "*.pdf": "red",
+    "*.txt": "white",
+    "*.md": "white+italic"
+  }
+}

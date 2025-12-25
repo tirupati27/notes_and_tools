@@ -6,7 +6,7 @@ def print_hr(char='-'):
 
 def exit_viewer():
     pprint("\nExiting search-result viewer.", attr="magenta+bold")
-    sys.exit()
+    sys.exit(0)
 
 def clear_cache_and_exit():
     # os.path.dirname() Removes the last component (file or folder name) from a path
@@ -27,7 +27,7 @@ def clear_cache_and_exit():
             print(i)
             print(e)
     pprint("Done !", attr="Green+bold")
-    sys.exit()
+    sys.exit(0)
 
 
 
@@ -45,7 +45,7 @@ def parse_and_validate_args(default_search_dir: str, project_doc: str) -> tuple:
 
     if args.usage:
         print(project_doc)
-        sys.exit()
+        sys.exit(0)
     if args.clear:
         clear_cache_and_exit()
 
@@ -60,7 +60,7 @@ def parse_and_validate_args(default_search_dir: str, project_doc: str) -> tuple:
     except Exception as e:
         pprint(f"Error: Regarding search dir `{directory}`", attr="red")
         print(e)
-        sys.exit()
+        sys.exit(1)
 
     return (
         keyword,

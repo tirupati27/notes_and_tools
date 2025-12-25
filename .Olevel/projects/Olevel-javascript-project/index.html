@@ -1,0 +1,460 @@
+<html>
+<head>
+<title>TIRUPATI</title>
+<style type="text/css">
+div.theme button{
+margin:0;
+padding:0;
+outline:1px solid red;
+}
+button{
+outline:1px solid red;
+}
+*{
+margin:0;
+padding:0;
+}
+
+a{
+animation-name:headings;
+animation-duration:1.2s;
+animation-iteration-count:infinite;
+animation-timing-function:ease;
+}
+
+@keyframes headings{
+0%{color:white;}
+50%{color:blue;}
+100%{color:white;}
+}
+
+section{
+height:80px;
+background:#be3144;
+color:white;
+text-align:center;
+font-size:2em;
+font-weight:bold;
+letter-spacing:3px;
+margin-bottom:15px;
+}
+
+.gotobutton{
+margin:0 auto;
+width:80px;
+height:17px;
+font-size:11px;
+text-align:center;
+background:#D9D9D9;
+border:1px solid black;
+}
+
+#tophr{
+margin-bottom:15px;
+}
+
+table{
+margin:10px;
+width:95%;
+height:80%;
+}
+
+div{
+width:45%;
+height:40%;
+margin:10px;
+margin-bottom:20px;
+float:left;
+box-shadow:3px 3px 8px;
+}
+
+h2{
+padding:5px;
+text-align:center;
+}
+
+button{
+border-radius:10px;
+width:70px;
+height:30px;
+margin-left:50%;
+}
+
+input{
+width:70px;
+height:23px;
+background:#D9D9D9;
+}
+
+.themecol{
+width:45px;
+height:32px;
+}
+</style
+</head>
+<body>
+<!--tiruapti******************************Heading_Section*******************-->
+<section id="section">
+M2.R5 : WD&P<br>All JavaScript Programs
+</section>
+<a href="#goToBottom"><p class="gotobutton">Go to Bottom</p></a>
+<hr id="tophr">
+<!--tirupati******************************DIV_01*******************-->
+<div id="div1">
+<h2>(1). Binary Operations</h2>
+<table>
+<tr class="arow1">
+<td>a=</td>
+<td><input id="anum1" type="number"></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="arow2">
+<td>b=</td>
+<td><input id="anum2" type="number"></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="arow3">
+<td><button id="button_id" type="submit" onclick="fun1()">Calculate</button></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="arow4">
+<td>a+b=</td>
+<td><input id="anum3"></td>
+<td>a-b=</td>
+<td><input id="anum4"></td>
+</tr>
+<tr class="arow5">
+<td>a*b=</td>
+<td><input id="anum5"></td>
+<td>a/b=</td>
+<td><input id="anum6"></td>
+</tr>
+<tr class="arow6">
+<td>a%b=</td>
+<td><input id="anum7"></td>
+<td>a**b=</td>
+<td><input id="anum8"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_02*******************-->
+<div id="div2">
+<h2>(2). Area Calculations</h2>
+<table>
+<tr class="arow1">
+<td>Length/Radius=</td>
+<td><input id="bnum1" type="number"></td>
+</tr>
+<tr class="arow2">
+<td>Width=</td>
+<td><input id="bnum2" type="number"></td>
+</tr>
+<tr class="arow3">
+<td><button id="button_id" type="submit" onclick="fun2()">Calculate</button></td>
+<td></td>
+</tr>
+<tr class="arow4">
+<td>The Area Of The Circle is=</td>
+<td><input id="bnum3"></td>
+</tr>
+<tr class="arow5">
+<td>The Area Of The Square is=</td>
+<td><input id="bnum4"></td>
+</tr>
+<tr class="arow6">
+<td>The Area Of The Rectangle is=</td>
+<td><input id="bnum5"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_03*******************-->
+<div id="div3">
+<h2>(3). S.I. Calculations</h2>
+<table>
+<tr class="arow1">
+<td>Principal Amt.=</td>
+<td><input id="cnum1" type="number"></td>
+</tr>
+<tr class="arow2">
+<td>Rate=
+</td>
+<td><input id="cnum2" type="number"></td>
+</tr>
+<tr class="arow3">
+<td>Duration(in years)=</td>
+<td><input id="cnum3" type="number"></td>
+</tr>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun3()">Calculate</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>The S.I. is=</td>
+<td><input id="cnum4"></td>
+</tr>
+<tr class="arow6">
+<td>The Total Amt. is=</td>
+<td><input id="cnum5"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_04*******************-->
+<div id="div4">
+<h2>(4). Greatest Number Calculations</h2>
+<table>
+<tr class="arow1">
+<td>x=</td>
+<td><input id="dnum1" type="number"></td>
+</tr>
+<tr class="arow2">
+<td>y=</td>
+<td><input id="dnum2" type="number"></td>
+</tr>
+<tr class="arow3">
+<td>z=</td>
+<td><input id="dnum3" type="number"></td>
+</tr>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun4()">Calculate</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>Resut:</td>
+<td><input id="dnum4" style="width:160px;"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_05*******************-->
+<div id="div5">
+<h2>(5). Leap Year Calculation</h2>
+<table>
+<tr class="arow1">
+<td>Year=</td>
+<td><input id="enum1" type="number"></td>
+</tr>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun5()">CHECK</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>Resut:</td>
+<td><input id="enum2" style="width:170px;"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_06*******************-->
+<div id="div6">
+<h2>(6). Swapping</h2>
+<table>
+<tr class="arow1">
+<td>a=</td>
+<td><input id="fnum1" type="number"></td>
+</tr>
+<tr class="arow2">
+<td>b=
+</td>
+<td><input id="fnum2" type="number"></td>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun6()">SWAP</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>a=</td>
+<td><input id="fnum3"></td>
+</tr>
+<tr class="arow6">
+<td>b=</td>
+<td><input id="fnum4"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_07*******************-->
+<div id="div7">
+<h2>(7). Checking Numbers</h2>
+<table>
+<tr class="arow1">
+<td>Enter any Number:</td>
+<td><input id="gnum1" type="number"></td>
+</tr>
+<tr class="arow3">
+<td><button id="button_id" type="submit" onclick="fun7()">CHECK</button></td>
+<td></td>
+</tr>
+<tr class="arow4">
+<td>Positive, Negetive or Zero?:</td>
+<td><input id="gnum2"></td>
+</tr>
+<tr class="arow5">
+<td>Buzz?:</td>
+<td><input id="gnum3"></td>
+</tr>
+<tr class="arow6">
+<td>Odd or Even?:</td>
+<td><input id="gnum4"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_08*******************-->
+<div id="div8">
+<h2>(8). Checking Validity of Triangle</h2>
+<table>
+<tr class="arow1">
+<td>Angle 1=</td>
+<td><input id="hnum1" type="number"></td>
+</tr>
+<tr class="arow2">
+<td>Angle 2=</td>
+<td><input id="hnum2" type="number"></td>
+</tr>
+<tr class="arow3">
+<td>Angle 3=</td>
+<td><input id="hnum3" type="number"></td>
+</tr>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun8()">CHECK</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>Resut:</td>
+<td><input id="hnum4" style="width:180px;"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_09*******************-->
+<div id="div9">
+<h2>(9). Checking Characters</h2>
+<table>
+<tr class="arow1">
+<td>Enter a Character:</td>
+<td><input id="inum1" maxlength="1"></td>
+</tr>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun9()">CHECK</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>Resut:</td>
+<td><input id="inum2" style="width:170px;"></td>
+</tr>
+</table>
+</div>
+
+<!--tiruapti******************************DIV_10*******************-->
+<div id="div10">
+<h2>(10). Compound Interest Calculations</h2>
+<table>
+<tr class="arow1">
+<td>Principal Amt.=</td>
+<td><input id="jnum1" type="number"></td>
+</tr>
+<tr class="arow2">
+<td>Rate=
+</td>
+<td><input id="jnum2" type="number"></td>
+</tr>
+<tr class="arow3">
+<td>Duration(in years)=</td>
+<td><input id="jnum3" type="number"></td>
+</tr>
+<tr class="arow4">
+<td>Compounding Frequency in one Year:</td>
+<td><input id="jnum4" type="number"></td>
+</tr>
+<tr class="arow5">
+<td><button id="button_id" type="submit" onclick="fun10()">Calculate</button></td>
+<td></td>
+</tr>
+<tr class="arow6">
+<td>The Total Amt. is=</td>
+<td><input id="jnum5"></td>
+</tr>
+<tr class="arow7">
+<td>E.A.R</td>
+<td><input id="jnum6"></td>
+</tr>
+</table>
+</div>
+<!--tiruapti******************************DIV_11*******************-->
+<div id="div11">
+<h2>(11). Checking Prime Number</h2>
+<table>
+<tr class="arow1">
+<td>Enter The Number:</td>
+<td><input id="knum1" type="number"></td>
+</tr>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun11()">CHECK</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>Resut:</td>
+<td><input id="knum2" style="width:180px;"></td>
+</tr>
+</table>
+</div>
+<!--tiruapti******************************DIV_12*******************-->
+<div id="div12">
+<h2>(12). Factorial of a Number</h2>
+<table>
+<tr class="arow1">
+<td>Enter The Number:</td>
+<td><input id="lnum1" type="number"></td>
+</tr>
+<tr class="arow4">
+<td><button id="button_id" type="submit" onclick="fun12()">CHECK</button></td>
+<td></td>
+</tr>
+<tr class="arow5">
+<td>Resut:</td>
+<td><input id="lnum2"></td>
+</tr>
+</table>
+</div>
+<!--tiruapti******************************DIV_13*THEME******************-->
+<div id="div13" class="themeDiv">
+<h2>(13). Theme Customization</h2>
+<table>
+<tr id="row1">
+<td>Box Background:</td>
+<td colspan="2"><input type="color" class="themecol"><input type="color" class="themecol"><input type="color" class="themecol"><select id="selectgrad"><option>linear-gradient</option><option>radial-gradient</option></select></td>
+<td></td>
+</tr>
+<tr id="row2">
+<td>Heading Background:</td>
+<td colspan="2"><input type="color" class="themecol"></td>
+<td></td>
+</tr>
+<tr id="row3">
+<td>Heading Text Color:</td>
+<td colspan="2"><input type="color" class="themecol"></td>
+<td></td>
+</tr>
+<tr id="row4">
+<td>Page Background:</td>
+<td colspan="2"><input type="color" class="themecol"></td>
+<td></td>
+</tr>
+<tr id="row5">
+<td><button onclick="defaultTheme();" id="goToBottom">Default</button></td>
+<td><button onclick="themeDataInput();">Dynamic</button></td>
+<td><a href="#section"><p class="gotobutton">Go to Top</p></a></td>
+</tr>
+</table>
+</div>
+
+</body>
+<script src="./olevel.js"></script>
+</html>
+

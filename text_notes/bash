@@ -1,2 +1,21 @@
 #!/bin/bash
 ******************************************************
+# How to get script directory like we get by "__file__" in python
+# Always works with 'bash script.sh' | './scrip.sh' | 'source script.sh'
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+# Symlink resolved version
+SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")" && pwd)"
+
+******************************************************
+# PS1 variable
+__name__="Tirupati bala"
+__nameColor__="255;100;0"
+__cwdColor__="220;100;100"
+
+if [[ $UID -eq 0 ]]; then
+    export PS1="\[\033[38;2;${__nameColor__}m\]$__name__:\[\033[0m\] \[\033[38;2;${__cwdColor__}m\]\w\[\033[0m\] \[\033[38;2;${__nameColor__}m\]#\[\033[0m\] "
+else
+    export PS1="\[\033[38;2;${__nameColor__}m\]$__name__:\[\033[0m\] \[\033[38;2;${__cwdColor__}m\]\w\[\033[0m\] \[\033[38;2;${__nameColor__}m\]\$\[\033[0m\] "
+fi
+******************************************************
+******************************************************

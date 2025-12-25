@@ -1,0 +1,13 @@
+[init]
+	defaultBranch = main
+[advice]
+	defaultBranchName = false
+[safe]
+	directory = *
+[user]
+	name = Tirupati
+	email = balaji274401@gmail.com
+[remote "origin"]
+  url = https://github.com/tirupati27/python-s-documentations.git
+[credential]
+  helper = store

@@ -1,0 +1,81 @@
+{
+   "directory_db": [
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "@@A-CODE"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "@@A-CODE",
+         "template"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "@@A-CODE",
+         "template",
+         "systemFileDistributorAndSetup"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "@@A-CODE",
+         "template",
+         ".python_documentation"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "@@A-CODE",
+         "template",
+         "AI_Flask_App"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "@@A-CODE",
+         "template",
+         "HELP"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "Android"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0",
+         "Download"
+      ],
+      [
+         "/",
+         "storage",
+         "emulated",
+         "0"
+      ]
+   ],
+   "setting_db": {
+      "NAME": "Tirupati",
+      "NAME-COL": "0;255;0",
+      "PWD-COL": "150;100;100",
+      "DIR-COL": "200;200;0"
+   }
+}

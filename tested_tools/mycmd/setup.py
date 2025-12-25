@@ -1,0 +1,3 @@
+"""
+--help, --uninstall, --install
+"""

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>form validation</title>
+<style type="text/css">
+*{
+margin:0;
+padding:0;
+}
+form{
+display:inline-block;
+border-radius:10px;
+padding:30px;
+box-shadow:3px 3px 8px;
+border:1px solid;
+background:#f4f4f4;
+}
+input, label{
+display:block;
+font-weight:bold;
+}
+p{
+color:red;
+font-size:13px;
+margin-bottom:20px;
+}
+div{
+display:flex;
+justify-content:center;
+}
+h1{
+text-align:center;
+margin:20px;
+}
+</style>
+</head>
+<body>
+<h1>Form with validation !</h1>
+<div>
+<form>
+<label for="name">Name: </label><input type="text" id="name" required><p></p>
+<label for="class">Class: </label><input type="text" id="class" required><p></p>
+<label for="dob">DOB: </label><input type="date" id="dob" required min="2001-01-01" max="2010-01-01"><p></p>
+<label for="add">Address: </label><textarea id="add" required></textarea><p></p>
+<label for="mob">Mobile No.: </label><input type="number" id="mob" required min="1000000000" max="9999999999"><p></p>
+<label for="email">Email: </label><input type="email" id="email" required><p></p>
+<label for="pass">Create Password: </label><input type="password" id="pass" required minlength="8"><p></p>
+<label for="cpass">Confirm Password: </label><input type="password" id="cpass" required><p></p>
+<input type="button" value="Submit" onclick="validation();" style="display:initial; margin-right:30px;">
+<input type="reset" value="Reset"  style="display:initial;">
+</form>
+</div>
+<br><br>
+<script type="text/javascript">
+let input, message;
+input=document.querySelectorAll("input, textarea");
+message=document.querySelectorAll("p");
+for(let i=0; i<input.length; i++){input[i].addEventListener("change", clr);}
+function validation(){
+if(input[0].checkValidity()){message[0].innerHTML="";}
+else{message[0].innerHTML="*This field is required!";}
+
+if(input[1].checkValidity()){message[1].innerHTML="";}
+else{message[1].innerHTML="*This field is required!";}
+
+if(input[2].checkValidity()){message[2].innerHTML="";}
+else{message[2].innerHTML="*Please enter the date between<br>01-01-2001 and 01-01-2010 !";}
+
+if(input[3].checkValidity()){message[3].innerHTML="";}
+else{message[3].innerHTML="*This field is required!";}
+
+if(input[4].checkValidity()){message[4].innerHTML="";}
+else{input[4].value=""; message[4].innerHTML="*Please enter a 10 digit valid mobile no.!";}
+
+if(input[5].checkValidity()){message[5].innerHTML="";}
+else{input[5].value=""; message[5].innerHTML="*Please enter a valid email !";}
+
+if(input[6].checkValidity()){message[6].innerHTML="";}
+else{input[6].value=""; message[6].innerHTML="*Password should be at leaste 8 characters!";}
+
+if(input[7].value==input[6].value){message[7].innerHTML="";}
+else{input[7].value=""; message[7].innerHTML="*Password mismatched !";}
+}
+function clr(){
+for(let i=0; i<message.length; i++){message[i].innerHTML="";}
+}
+</script>
+</body>
+</html>

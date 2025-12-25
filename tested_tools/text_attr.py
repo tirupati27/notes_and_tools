@@ -47,73 +47,8 @@ Background colors:
     bg:rand_color      - Random background color
 """
 
-import os, sys, re, random
-
-# --- You can add more colors here to use ---
-_COLORS = {
-    "black": "0;0;0",      "white": "255;255;255", "red": "255;0;0",
-    "green": "0;255;0",    "blue": "0;0;255",      "yellow": "255;255;0",
-    "cyan": "0;255;255",   "magenta": "255;0;255", "gray": "128;128;128",
-    "orange": "255;165;0", "purple": "128;0;128",  "pink": "255;192;203",
-    "brown": "165;42;42"
-}
-_COLOR_KEYS = tuple(_COLORS.keys())
-_RGB_PATTERN = re.compile(
-    r"^\s*(?:25[0-5]|2[0-4]\d|1?\d{1,2})\s*;"
-    r"\s*(?:25[0-5]|2[0-4]\d|1?\d{1,2})\s*;"
-    r"\s*(?:25[0-5]|2[0-4]\d|1?\d{1,2})\s*$"
-)
-_ESC = "\033["
-_RESET = f"{_ESC}0m"
-# Pre-map styles for O(1) lookup
-_STYLES = {
-    "bold": "1",
-    "italic": "3",
-    "underline": "4",
-    "blink": "5",
-    "inverse": "7",
-    "strikethrough": "9",
-}
-
-def _GET_COLOR(value: str) -> str | None:
-    """Return RGB triplet string if valid color name or RGB pattern."""
-    if value in _COLORS:
-        return _COLORS[value]
-    if _RGB_PATTERN.match(value):
-        return value.strip()
-    return None
-
-def _BUILD_CODES(attr: str) -> str:
-    """Build ANSI escape codes string for given attributes."""
-    style_codes = []
-    fg_code = ""
-    bg_code = ""
-
-    for a in (x.replace(" ", "").lower() for x in attr.split("+")):
-        if a in _STYLES:
-            style_codes.append(_STYLES[a])
-        elif a == "rand_color":
-            fg_code = f"38;2;{_COLORS[random.choice(_COLOR_KEYS)]}"
-        elif a == "bg:rand_color":
-            bg_code = f"48;2;{_COLORS[random.choice(_COLOR_KEYS)]}"
-        elif a.startswith("bg:"):
-            col = _GET_COLOR(a[3:])
-            if col:
-                bg_code = f"48;2;{col}"
-        else:
-            col = _GET_COLOR(a)
-            if col:
-                fg_code = f"38;2;{col}"
-
-    codes = []
-    if style_codes:
-        codes.append(f"{_ESC}{';'.join(style_codes)}m")
-    if fg_code:
-        codes.append(f"{_ESC}{fg_code}m")
-    if bg_code:
-        codes.append(f"{_ESC}{bg_code}m")
-
-    return "".join(codes)
+import os, sys
+from build_ansi_escape_code import build_ansi_escape_code
 
 def pprint(*args, attr: str | None = None,
            sep: str = ' ', end: str = '\n',
@@ -128,8 +63,10 @@ def pprint(*args, attr: str | None = None,
         print(text, end=end, file=file, flush=flush)
         return
 
-    codes = _BUILD_CODES(attr)
-    print(f"{codes}{text}{_RESET}", end=end, file=file, flush=flush)
+    ansi_code = build_ansi_escape_code(attr)
+    if ansi_code:
+        text = f"\033[{ansi_code}m{text}\033[0m"
+    print(text, end=end, file=file, flush=flush)
 
 
 if __name__ == "__main__":
@@ -164,6 +101,6 @@ if __name__ == "__main__":
         sys.exit(0)
     if not remaining:
         p.error("at least one text argument is required")
-        sys.exit()
+        sys.exit(1)
     
     pprint(*remaining, attr=args.attr, sep=args.sep, end=args.end)
